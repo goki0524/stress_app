@@ -10,6 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20180205133923) do
+
+  create_table "companies", force: :cascade do |t|
+    t.string "company_name"
+    t.string "company_email"
+    t.integer "department_number"
+    t.integer "employee_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.index ["company_email"], name: "index_companies_on_company_email", unique: true
+  end
 
 end
