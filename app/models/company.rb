@@ -4,8 +4,8 @@ class Company < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :company_email, presence: true, length: { maximum: 255 },
               format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-  validates :department_number, presence: true
-  validates :employee_number, presence: true
+  validates :department_number, numericality: { only_integer: true, greater_than: 0 }
+  validates :employee_number, numericality: { only_integer: true, greater_than: 0 }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 end

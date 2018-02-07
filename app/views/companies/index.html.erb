@@ -1,0 +1,7 @@
+<h1>All Company</h1>
+  <ul>
+    <% @companies.each do |c| %>
+      <li><%= c.company_name %>
+      <li><%= c.company_email %> <br>
+    <% end %>
+  </ul>

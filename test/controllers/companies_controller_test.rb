@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CompaniesControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get companies_new_url
+    get new_company_path
     assert_response :success
   end
 
