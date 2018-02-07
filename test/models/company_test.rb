@@ -28,8 +28,28 @@ class CompanyTest < ActiveSupport::TestCase
     assert_not @company.valid?
   end
   
+  test "department number should be integer" do
+    @company.department_number = 1.1
+    assert_not @company.valid?
+  end
+  
+  test "department number should be natural number" do
+    @company.department_number = 0
+    assert_not @company.valid?
+  end
+  
   test "employee number should be present" do
     @company.employee_number = "     "
+    assert_not @company.valid?
+  end
+  
+  test "employee number should be integer" do
+    @company.employee_number = 1.1
+    assert_not @company.valid?
+  end
+  
+  test "employee number should be natural number" do
+    @company.employee_number = 0
     assert_not @company.valid?
   end
   

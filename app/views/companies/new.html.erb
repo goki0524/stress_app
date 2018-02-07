@@ -1,3 +1,30 @@
 <% provide(:title, 'Company Sign up') %>
 <h1>Company Sign up</h1>
-<p>This will be a signup page for new companies.</p>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@company) do |f| %>
+      <%= render 'shared/error_messages' %>
+      
+      <%= f.label :company_name, "会社名" %>
+      <%= f.text_field :company_name, class: 'form-control' %>
+    
+      <%= f.label :company_email, "Email" %>
+      <%= f.email_field :company_email, class: 'form-control' %>
+      
+      <%= f.label :employee_number, "従業員数" %>
+      <%= f.number_field :employee_number, class: 'form-control' %>
+      
+      <%= f.label :department_number, "部署数" %>
+      <%= f.number_field :department_number, class: 'form-control' %>
+      
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "パスワード確認" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      
+      <%= f.submit "アカウント作成", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
