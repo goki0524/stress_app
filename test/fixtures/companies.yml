@@ -1,0 +1,4 @@
+test_1:
+  company_name: test_1
+  company_email: test_1@test.com
+  password_digest: <%= Company.digest('password') %>
