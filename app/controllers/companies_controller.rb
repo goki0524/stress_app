@@ -15,6 +15,7 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
+      log_in(@company)
       flash[:success] = "Welcome to the Stress App!"
       redirect_to @company
     else
