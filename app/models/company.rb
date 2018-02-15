@@ -1,4 +1,5 @@
 class Company < ApplicationRecord
+  has_many :departments
   before_save { company_email.downcase! }
   validates :company_name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
