@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_action :logged_in_company, only:[:show]
   
   def index
     @companies = Company.all
@@ -29,7 +30,8 @@ class CompaniesController < ApplicationController
   
     def company_params
      params.require(:company).permit(:company_name, :company_email,
-             :department_number, :employee_number, :password, :password_confirmation )
+             :all_employee_number, :password, :password_confirmation )
     end
-  
+    
+
 end

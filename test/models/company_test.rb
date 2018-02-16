@@ -4,15 +4,15 @@ class CompanyTest < ActiveSupport::TestCase
  
  def setup
    @company = Company.new(company_name: "Example Company", 
-              company_email: "info@example.com", department_number: 10,
-               employee_number: 50, password: "foobar", 
+              company_email: "info@example.com",
+               all_employee_number: 50, password: "foobar", 
                password_confirmation: "foobar")
  end
  
   test "should be valid" do
     assert @company.valid?
   end
-  
+
   test "company name should be present" do
     @company.company_name = "     "
     assert_not @company.valid?
@@ -23,33 +23,19 @@ class CompanyTest < ActiveSupport::TestCase
     assert_not @company.valid?
   end
   
-  test "department number should be present" do
-    @company.department_number = "     "
+  
+  test "all employee number should be present" do
+    @company.all_employee_number = "     "
     assert_not @company.valid?
   end
   
-  test "department number should be integer" do
-    @company.department_number = 1.1
+  test "all employee number should be integer" do
+    @company.all_employee_number = 1.1
     assert_not @company.valid?
   end
   
-  test "department number should be natural number" do
-    @company.department_number = 0
-    assert_not @company.valid?
-  end
-  
-  test "employee number should be present" do
-    @company.employee_number = "     "
-    assert_not @company.valid?
-  end
-  
-  test "employee number should be integer" do
-    @company.employee_number = 1.1
-    assert_not @company.valid?
-  end
-  
-  test "employee number should be natural number" do
-    @company.employee_number = 0
+  test "all employee number should be natural number" do
+    @company.all_employee_number = 0
     assert_not @company.valid?
   end
   

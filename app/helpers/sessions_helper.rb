@@ -12,6 +12,11 @@ module SessionsHelper
     @current_company ||= Company.find_by(id: session[:company_id])
   end
   
+  # 渡されたcompanyがログイン中のcompanyか返す
+  def current_company?(company)
+    company == current_company
+  end
+  
   # companyがログインしていればtrue、その他ならfalseを返す
   def logged_in?
     !current_company.nil?

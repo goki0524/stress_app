@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180215090149) do
+ActiveRecord::Schema.define(version: 20180215101516) do
 
   create_table "companies", force: :cascade do |t|
     t.string "company_name"
     t.string "company_email"
-    t.integer "department_number"
-    t.integer "employee_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.integer "all_employee_number"
     t.index ["company_email"], name: "index_companies_on_company_email", unique: true
   end
 
@@ -30,16 +29,6 @@ ActiveRecord::Schema.define(version: 20180215090149) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_departments_on_company_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.integer "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password_digest"
-    t.index ["company_id"], name: "index_users_on_company_id"
   end
 
 end
