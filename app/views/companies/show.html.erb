@@ -1,11 +1,12 @@
 <% provide(:title, "#{@company.company_name}") %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="company_info">
-      <h1>会社名：<%= @company.company_name %></h1>
-      <h1>email：<%= @company.company_email %></h1>
-    </section>
-  </aside>
-</div>
 
+  <h1>会社名：<%= @company.company_name %></h1>
+  <h1>Email：<%= @company.company_email %></h1>
+  <p>＜部署＞</p>
+     <% @company.departments.each do |d| %>
+       <p>部署名：<%= d.department_name %></p>
+       <p>部署人数：<%= d.employee_number %>人</p><br>
+     <% end %>
+     
+<%= link_to "部署を追加する", new_department_path, class: "btn btn-lg btn-primary" %>
 

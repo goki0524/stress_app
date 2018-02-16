@@ -1,0 +1,18 @@
+<% provide(:title, 'Department New') %>
+<h1>Department New</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@department) do |f| %>
+      <%= render 'shared/error_department_messages' %>
+      
+      <%= f.label :department_name, "部署名" %>
+      <%= f.text_field :department_name, class: 'form-control' %>
+    
+      <%= f.label :employee_number, "部署従業員数" %>
+      <%= f.number_field :employee_number, class: 'form-control' %>
+      
+      <%= f.submit "部署を追加する", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
