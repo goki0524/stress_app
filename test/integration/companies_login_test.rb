@@ -20,7 +20,7 @@ class CompaniesLoginTest < ActionDispatch::IntegrationTest
     get login_path
     post login_path, params: { session: { company_email: @company.company_email,
                               password: "password" } }
-    assert is_logged_in?
+    assert is_company_logged_in?
     assert_redirected_to @company
     follow_redirect!
     assert_template 'companies/show'
@@ -28,7 +28,7 @@ class CompaniesLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", logout_path
     assert_select "a[href=?]", company_path(@company)
     delete logout_path
-    assert_not is_logged_in?
+    assert_not is_company_logged_in?
     assert_redirected_to root_url
     follow_redirect!
     assert_select "a[href=?]", login_path
