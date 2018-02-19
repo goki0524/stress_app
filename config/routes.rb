@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   get    '/signup',  to: 'companies#new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
+  get    '/login_employee',   to: 'sessions#new_employee'
+  post   '/login_employee',   to: 'sessions#create_employee'
   delete '/logout',  to: 'sessions#destroy'
+  delete '/logout_employee',  to: 'sessions#destroy_employee'
   resources :companies
   resources :departments, only: [:new, :create]
+  resources :employees, only: [:new, :create, :show]
 end

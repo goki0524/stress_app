@@ -14,18 +14,18 @@ class CompanyTest < ActiveSupport::TestCase
   end
 
   test "company name should be present" do
-    @company.company_name = "     "
+    @company.company_name = " "
     assert_not @company.valid?
   end
   
   test "company email should be present" do
-    @company.company_email = "     "
+    @company.company_email = " "
     assert_not @company.valid?
   end
   
   
   test "all employee number should be present" do
-    @company.all_employee_number = "     "
+    @company.all_employee_number = " "
     assert_not @company.valid?
   end
   

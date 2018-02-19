@@ -1,0 +1,7 @@
+employee_1:
+  first_name: first
+  last_name: last
+  email: employee_1@test.com
+  age: 20
+  sex: 1
+  password_digest: <%= Employee.digest('password') %>

@@ -11,7 +11,13 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   
   # テストcompanyがログイン中の場合にtrueを返す
-  def is_logged_in?
+  def is_company_logged_in?
     !session[:company_id].nil?
   end
+  
+  # テストemployeeがログイン中の場合にtrueを返す
+  def is_employee_logged_in?
+    !session[:employee_id].nil?
+  end
+  
 end
