@@ -17,5 +17,6 @@ module ApplicationHelper
       "女性"
     end
   end
+  
 
 end

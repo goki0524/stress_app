@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :logged_in_employee, only:[:show]
+  before_action :correct_employee, only:[:show]
   
   def new
     @employee = Employee.new
@@ -28,4 +29,8 @@ class EmployeesController < ApplicationController
       :age, :sex, :password, :password_confirmation )
     end
 
+    def correct_employee
+      @employee = Employee.find(params[:id])
+      redirect_to(root_url) unless current_employee?(@employee)
+    end
 end

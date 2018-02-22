@@ -1,7 +1,8 @@
 <% provide(:title, "#{ @employee.first_name + @employee.last_name }") %>
 
-  <h1>名前：<%= @employee.first_name + @employee.last_name %></h1>
-  <h1>Email：<%= @employee.email %></h1>
-  <h1>年齢：<%= @employee.age %>歳</h1>
-  <h1>性別：<%= replace_sex(@employee.sex) %></h1>
+  <h2>名前：<%= @employee.first_name + @employee.last_name %></h2>
+  <h2>Email：<%= @employee.email %></h2>
+  <h2>年齢：<%= @employee.age %>歳</h2>
+  <h2>性別：<%= replace_sex(@employee.sex) %></h2>
      
+<%= link_to "Stress Check!", new_value_path %>

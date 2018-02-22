@@ -3,3 +3,9 @@ test_1:
   company_email: test_1@test.com
   all_employee_number: 50
   password_digest: <%= Company.digest('password') %>
+  
+test_2:
+  company_name: test_2
+  company_email: test_2@test.com
+  all_employee_number: 50
+  password_digest: <%= Company.digest('password') %>

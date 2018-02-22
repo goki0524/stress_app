@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :companies
   resources :departments, only: [:new, :create]
   resources :employees, only: [:new, :create, :show]
+  resources :values, only: [:new, :create, :show, :index]
 end

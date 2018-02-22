@@ -1,4 +1,5 @@
 class Employee < ApplicationRecord
+  has_many :values, dependent: :destroy
   before_save { email.downcase! }
   validates :first_name, presence: true, length: { maximum: 20 }
   validates :last_name, presence: true, length: { maximum: 20 }
