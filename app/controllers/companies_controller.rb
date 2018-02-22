@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :logged_in_company, only:[:show]
+  before_action :correct_company, only:[:show]
   
   def index
     @companies = Company.all
@@ -33,5 +34,9 @@ class CompaniesController < ApplicationController
              :all_employee_number, :password, :password_confirmation )
     end
     
-
+    def correct_company
+      @company = Company.find(params[:id])
+      redirect_to(root_url) unless current_company?(@company)
+    end
+    
 end

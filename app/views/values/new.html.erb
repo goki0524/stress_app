@@ -1,0 +1,308 @@
+<% provide(:title, 'Stress Check') %>
+<h1>Stress Check</h1>
+<%= current_employee.first_name+current_employee.last_name %>
+
+
+<%= form_for @value do |f| %>
+
+<h2>A あなたの仕事についてうかがいます。最もあてはまるものに○を付けてください。</h2>
+
+<p>1. 非常にたくさんの仕事をしなければならない</p>
+<label><%= f.radio_button('a1', '1') %>そうだ</label>
+<label><%= f.radio_button('a1', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a1', '3') %>ややちがう</label>
+<label><%= f.radio_button('a1', '4') %>ちがう</label>
+<p>2. 時間内に仕事が処理しきれない</p>
+<label><%= f.radio_button('a2', '1') %>そうだ</label>
+<label><%= f.radio_button('a2', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a2', '3') %>ややちがう</label>
+<label><%= f.radio_button('a2', '4') %>ちがう</label>
+<p>3. 一生懸命働かなければならない</p>
+<label><%= f.radio_button('a3', '1') %>そうだ</label>
+<label><%= f.radio_button('a3', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a3', '3') %>ややちがう</label>
+<label><%= f.radio_button('a3', '4') %>ちがう</label>
+<p>4. かなり注意を集中する必要がある</p>
+<label><%= f.radio_button('a4', '1') %>そうだ</label>
+<label><%= f.radio_button('a4', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a4', '3') %>ややちがう</label>
+<label><%= f.radio_button('a4', '4') %>ちがう</label>
+<p>5. 高度の知識や技術が必要なむずかしい仕事だ</p>
+<label><%= f.radio_button('a5', '1') %>そうだ</label>
+<label><%= f.radio_button('a5', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a5', '3') %>ややちがう</label>
+<label><%= f.radio_button('a5', '4') %>ちがう</label>
+<p>6. 勤務時間中はいつも仕事のことを考えていなければならない</p>
+<label><%= f.radio_button('a6', '1') %>そうだ</label>
+<label><%= f.radio_button('a6', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a6', '3') %>ややちがう</label>
+<label><%= f.radio_button('a6', '4') %>ちがう</label>
+<p>7. からだを大変よく使う仕事だ</p>
+<label><%= f.radio_button('a7', '1') %>そうだ</label>
+<label><%= f.radio_button('a7', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a7', '3') %>ややちがう</label>
+<label><%= f.radio_button('a7', '4') %>ちがう</label>
+<p>8. 自分のペースで仕事ができる</p>
+<label><%= f.radio_button('a8', '1') %>そうだ</label>
+<label><%= f.radio_button('a8', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a8', '3') %>ややちがう</label>
+<label><%= f.radio_button('a8', '4') %>ちがう</label>
+<p>9. 自分で仕事の順番・やり方を決めることができる</p>
+<label><%= f.radio_button('a9', '1') %>そうだ</label>
+<label><%= f.radio_button('a9', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a9', '3') %>ややちがう</label>
+<label><%= f.radio_button('a9', '4') %>ちがう</label>
+<p>10. 職場の仕事の方針に自分の意見を反映できる</p>
+<label><%= f.radio_button('a10', '1') %>そうだ</label>
+<label><%= f.radio_button('a10', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a10', '3') %>ややちがう</label>
+<label><%= f.radio_button('a10', '4') %>ちがう</label>
+<p>11. 自分の技能や知識を仕事で使うことが少ない</p>
+<label><%= f.radio_button('a11', '1') %>そうだ</label>
+<label><%= f.radio_button('a11', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a11', '3') %>ややちがう</label>
+<label><%= f.radio_button('a11', '4') %>ちがう</label>
+<p>12. 私の部署内で意見のくい違いがある</p>
+<label><%= f.radio_button('a12', '1') %>そうだ</label>
+<label><%= f.radio_button('a12', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a12', '3') %>ややちがう</label>
+<label><%= f.radio_button('a12', '4') %>ちがう</label>
+<p>13. 私の部署と他の部署とはうまが合わない</p>
+<label><%= f.radio_button('a13', '1') %>そうだ</label>
+<label><%= f.radio_button('a13', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a13', '3') %>ややちがう</label>
+<label><%= f.radio_button('a13', '4') %>ちがう</label>
+<p>14. 私の職場の雰囲気は友好的である</p>
+<label><%= f.radio_button('a14', '1') %>そうだ</label>
+<label><%= f.radio_button('a14', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a14', '3') %>ややちがう</label>
+<label><%= f.radio_button('a14', '4') %>ちがう</label>
+<p>15. 私の職場の作業環境(騒音、照明、温度、換気など)はよくない</p>
+<label><%= f.radio_button('a15', '1') %>そうだ</label>
+<label><%= f.radio_button('a15', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a15', '3') %>ややちがう</label>
+<label><%= f.radio_button('a15', '4') %>ちがう</label>
+<p>16. 仕事の内容は自分にあっている</p>
+<label><%= f.radio_button('a16', '1') %>そうだ</label>
+<label><%= f.radio_button('a16', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a16', '3') %>ややちがう</label>
+<label><%= f.radio_button('a16', '4') %>ちがう</label>
+<p>17. 働きがいのある仕事だ</p>
+<label><%= f.radio_button('a17', '1') %>そうだ</label>
+<label><%= f.radio_button('a17', '2') %>まあそうだ</label>
+<label><%= f.radio_button('a17', '3') %>ややちがう</label>
+<label><%= f.radio_button('a17', '4') %>ちがう</label>
+
+<h2>B 最近1か月間のあなたの状態についてうかがいます。最もあてはまるものに○を付けてください。</h2>
+<p>1. 活気がわいてくる</p>
+<label><%= f.radio_button('b1', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b1', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b1', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b1', '4') %>ほとんどいつもあった</label>
+<p>2. 元気がいっぱいだ</p>
+<label><%= f.radio_button('b2', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b2', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b2', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b2', '4') %>ほとんどいつもあった</label>
+<p>3. 生き生きする</p>
+<label><%= f.radio_button('b3', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b3', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b3', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b3', '4') %>ほとんどいつもあった</label>
+<p>4. 怒りを感じる</p>
+<label><%= f.radio_button('b4', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b4', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b4', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b4', '4') %>ほとんどいつもあった</label>
+<p>5. 内心腹立たしい</p>
+<label><%= f.radio_button('b5', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b5', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b5', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b5', '4') %>ほとんどいつもあった</label>
+<p>6. イライラしている</p>
+<label><%= f.radio_button('b6', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b6', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b6', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b6', '4') %>ほとんどいつもあった</label>
+<p>7. ひどく疲れた</p>
+<label><%= f.radio_button('b7', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b7', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b7', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b7', '4') %>ほとんどいつもあった</label>
+<p>8. へとへとだ</p>
+<label><%= f.radio_button('b8', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b8', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b8', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b8', '4') %>ほとんどいつもあった</label>
+<p>9. だるい</p>
+<label><%= f.radio_button('b9', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b9', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b9', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b9', '4') %>ほとんどいつもあった</label>
+<p>10. 気がはりつめている</p>
+<label><%= f.radio_button('b10', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b10', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b10', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b10', '4') %>ほとんどいつもあった</label>
+<p>11. 不安だ</p>
+<label><%= f.radio_button('b11', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b11', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b11', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b11', '4') %>ほとんどいつもあった</label>
+<p>12. 落着かない</p>
+<label><%= f.radio_button('b12', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b12', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b12', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b12', '4') %>ほとんどいつもあった</label>
+<p>13. ゆううつだ</p>
+<label><%= f.radio_button('b13', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b13', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b13', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b13', '4') %>ほとんどいつもあった</label>
+<p>14. 何をするのも面倒だ</p>
+<label><%= f.radio_button('b14', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b14', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b14', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b14', '4') %>ほとんどいつもあった</label>
+<p>15. 物事に集中できない</p>
+<label><%= f.radio_button('b15', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b15', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b15', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b15', '4') %>ほとんどいつもあった</label>
+<p>16. 気分が晴れない</p>
+<label><%= f.radio_button('b16', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b16', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b16', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b16', '4') %>ほとんどいつもあった</label>
+<p>17. 仕事が手につかない</p>
+<label><%= f.radio_button('b17', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b17', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b17', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b17', '4') %>ほとんどいつもあった</label>
+<p>18. 悲しいと感じる</p>
+<label><%= f.radio_button('b18', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b18', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b18', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b18', '4') %>ほとんどいつもあった</label>
+<p>19. めまいがする</p>
+<label><%= f.radio_button('b19', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b19', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b19', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b19', '4') %>ほとんどいつもあった</label>
+<p>20. 体のふしぶしが痛む</p>
+<label><%= f.radio_button('b20', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b20', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b20', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b20', '4') %>ほとんどいつもあった</label>
+<p>21. 頭が重かったり頭痛がする</p>
+<label><%= f.radio_button('b21', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b21', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b21', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b21', '4') %>ほとんどいつもあった</label>
+<p>22. 首筋や肩がこる</p>
+<label><%= f.radio_button('b22', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b22', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b22', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b22', '4') %>ほとんどいつもあった</label>
+<p>23. 腰が痛い</p>
+<label><%= f.radio_button('b23', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b23', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b23', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b23', '4') %>ほとんどいつもあった</label>
+<p>24. 目が疲れる</p>
+<label><%= f.radio_button('b24', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b24', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b24', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b24', '4') %>ほとんどいつもあった</label>
+<p>25. 動悸や息切れがする</p>
+<label><%= f.radio_button('b25', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b25', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b25', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b25', '4') %>ほとんどいつもあった</label>
+<p>26. 胃腸の具合が悪い</p>
+<label><%= f.radio_button('b26', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b26', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b26', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b26', '4') %>ほとんどいつもあった</label>
+<p>27. 食欲がない</p>
+<label><%= f.radio_button('b27', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b27', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b27', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b27', '4') %>ほとんどいつもあった</label>
+<p>28. 便秘や下痢をする</p>
+<label><%= f.radio_button('b28', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b28', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b28', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b28', '4') %>ほとんどいつもあった</label>
+<p>29. よく眠れない</p>
+<label><%= f.radio_button('b29', '1') %>ほとんどなかった</label>
+<label><%= f.radio_button('b29', '2') %>ときどきあった</label>
+<label><%= f.radio_button('b29', '3') %>しばしばあった</label>
+<label><%= f.radio_button('b29', '4') %>ほとんどいつもあった</label>
+
+<h2>C あなたの周りの方々についてうかがいます。最もあてはまるものに○を付けてください。</h2>
+<h4>次の人たちはどのくらい気軽に話ができますか?</h4>
+<p>1. 上司</p>
+<label><%= f.radio_button('c1', '1') %>非常に</label>
+<label><%= f.radio_button('c1', '2') %>かなり</label>
+<label><%= f.radio_button('c1', '3') %>多少</label>
+<label><%= f.radio_button('c1', '4') %>全くない</label>
+<p>2. 職場の同僚</p>
+<label><%= f.radio_button('c2', '1') %>非常に</label>
+<label><%= f.radio_button('c2', '2') %>かなり</label>
+<label><%= f.radio_button('c2', '3') %>多少</label>
+<label><%= f.radio_button('c2', '4') %>全くない</label>
+<p>3. 配偶者、家族、友人等</p>
+<label><%= f.radio_button('c3', '1') %>非常に</label>
+<label><%= f.radio_button('c3', '2') %>かなり</label>
+<label><%= f.radio_button('c3', '3') %>多少</label>
+<label><%= f.radio_button('c3', '4') %>全くない</label>
+<h4>あなたが困った時、次の人たちはどのくらい頼りになりますか?</h4>
+<p>4. 上司</p>
+<label><%= f.radio_button('c4', '1') %>非常に</label>
+<label><%= f.radio_button('c4', '2') %>かなり</label>
+<label><%= f.radio_button('c4', '3') %>多少</label>
+<label><%= f.radio_button('c4', '4') %>全くない</label>
+<p>5. 職場の同僚</p>
+<label><%= f.radio_button('c5', '1') %>非常に</label>
+<label><%= f.radio_button('c5', '2') %>かなり</label>
+<label><%= f.radio_button('c5', '3') %>多少</label>
+<label><%= f.radio_button('c5', '4') %>全くない</label>
+<p>6. 配偶者、家族、友人等</p>
+<label><%= f.radio_button('c6', '1') %>非常に</label>
+<label><%= f.radio_button('c6', '2') %>かなり</label>
+<label><%= f.radio_button('c6', '3') %>多少</label>
+<label><%= f.radio_button('c6', '4') %>全くない</label>
+<h4>あなたの個人的な問題を相談したら、次の人たちはどのくらいきいてくれますか?</h4>
+<p>7. 上司</p>
+<label><%= f.radio_button('c7', '1') %>非常に</label>
+<label><%= f.radio_button('c7', '2') %>かなり</label>
+<label><%= f.radio_button('c7', '3') %>多少</label>
+<label><%= f.radio_button('c7', '4') %>全くない</label>
+<p>8. 職場の同僚</p>
+<label><%= f.radio_button('c8', '1') %>非常に</label>
+<label><%= f.radio_button('c8', '2') %>かなり</label>
+<label><%= f.radio_button('c8', '3') %>多少</label>
+<label><%= f.radio_button('c8', '4') %>全くない</label>
+<p>9. 配偶者、家族、友人等</p>
+<label><%= f.radio_button('c9', '1') %>非常に</label>
+<label><%= f.radio_button('c9', '2') %>かなり</label>
+<label><%= f.radio_button('c9', '3') %>多少</label>
+<label><%= f.radio_button('c9', '4') %>全くない</label>
+
+<h2>D 満足度について</h2>
+<p>1. 仕事に満足だ</p>
+<label><%= f.radio_button('d1', '1') %>満足</label>
+<label><%= f.radio_button('d1', '2') %>まあ満足</label>
+<label><%= f.radio_button('d1', '3') %>やや不満足</label>
+<label><%= f.radio_button('d1', '4') %>不満足</label>
+
+<p>2. 家庭生活に満足だ</p>
+<label><%= f.radio_button('d2', '1') %>満足</label>
+<label><%= f.radio_button('d2', '2') %>まあ満足</label>
+<label><%= f.radio_button('d2', '3') %>やや不満足</label>
+<label><%= f.radio_button('d2', '4') %>不満足</label>
+
+<p><%= f.submit("決定")%></p>
+
+<% end %>

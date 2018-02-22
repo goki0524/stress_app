@@ -4,6 +4,7 @@ class EmployeesLoginTest < ActionDispatch::IntegrationTest
   
   def setup
     @employee = employees(:employee_1)
+    @other_employee = employees(:employee_2)
   end
   
   test "login with invalid information" do
@@ -36,4 +37,14 @@ class EmployeesLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", employee_path(@employee), count: 0
   end
   
+  test "login with valid information followed by current employee" do
+    get login_employee_path
+    post login_employee_path, params: { session: { email: @employee.email, 
+                                      password: "password" } }
+    assert is_employee_logged_in?
+    assert_redirected_to @employee
+    follow_redirect!
+    get employee_path(@other_employee)
+    assert_redirected_to root_url
+  end
 end
