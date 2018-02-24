@@ -21,7 +21,7 @@ class CompaniesSignupTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_template 'companies/show'
-    assert is_company_logged_in?
+    assert !is_company_logged_in?
   end
   
   

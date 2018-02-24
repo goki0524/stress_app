@@ -6,3 +6,9 @@
   <h2>性別：<%= replace_sex(@employee.sex) %></h2>
      
 <%= link_to "Stress Check!", new_value_path %>
+
+  <% @employee.values.each do |v| %>
+    <li>
+      <%= link_to date_conversion(v.created_at), value_path(v.id) %>
+    </li>
+  <% end %>
