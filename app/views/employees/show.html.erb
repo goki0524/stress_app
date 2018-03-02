@@ -4,7 +4,12 @@
   <h2>Email：<%= @employee.email %></h2>
   <h2>年齢：<%= @employee.age %>歳</h2>
   <h2>性別：<%= replace_sex(@employee.sex) %></h2>
-     
+  <h2>会社名：<%= @company_name %></h2>
+  <h2>所属部署：
+  <% @employee.relationships.each do |i| %>
+     <li><%= link_to "#{i.department.department_name}", department_path(i.department) %></li>
+    <% end %>
+  </h2>
 <%= link_to "Stress Check!", new_value_path %>
 
   <% @employee.values.each do |v| %>
