@@ -1,0 +1,37 @@
+<% provide(:title, "#{ @department.department_name }") %>
+
+  <h2>部署名：<%= @department.department_name %></h2>
+  <h2>従業員数：<%= @department.employee_number %></h2>
+  <h2>所属している会社員<% @department.relationships.each do |i| %> 
+  
+  
+  <li><%= i.employee.first_name + i.employee.last_name %></li>
+  
+  
+  
+  <% end %>
+  </h2>
+  
+<% if logged_in_employee? %>
+  <h2>会社員でログインしています</h2>
+  <% if current_employee.belong?(@department) %>
+    <h2><%= @department.department_name %> に所属しています</h2>
+    <%= form_for(current_employee.relationships.find_by(department_id: @department.id),
+                  html: { method: :delete }) do |f| %>
+    <%= f.submit "脱退する", class: "btn" %>
+  <% end %>
+  <% else %>
+    <h2>所属していません</h2>
+   <%= form_for(current_employee.relationships.build) do |f| %>
+     <div><%= hidden_field_tag :department_id, @department.id %></div>
+     <%= f.submit "所属する", class: "btn btn-primary" %>
+   <% end %>
+ 
+  <% end %>
+  
+ 
+  
+
+  
+  
+<% end %>

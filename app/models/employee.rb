@@ -1,5 +1,7 @@
 class Employee < ApplicationRecord
   has_many :values, dependent: :destroy
+  has_many :relationships
+  has_many :departments, through: :relationships
   before_save { email.downcase! }
   validates :first_name, presence: true, length: { maximum: 20 }
   validates :last_name, presence: true, length: { maximum: 20 }
@@ -20,6 +22,26 @@ class Employee < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
   
+  #部署に所属する
+  def belong(department)
+    # relationships.create(department_id: department.id)
+     departments << department
+  end
+  
+  def belong?(department)
+    # relationships.find_by(department_id: department.id)
+    departments.include?(department)
+  end
+  
+  def escape(department)
+    # relationships.find_by(department_id: department.id).delete
+    departments.delete(department)
+  end
   
 
+  
+  
+  
+
+  
 end
