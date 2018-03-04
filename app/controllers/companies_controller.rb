@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+ 
+  
   before_action :logged_in_company, only:[:show]
   before_action :correct_company, only:[:show]
   
