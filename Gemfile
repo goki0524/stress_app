@@ -11,6 +11,11 @@ gem 'jquery-rails', '4.3.1'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
 gem 'lazy_high_charts', '~> 1.5', '>= 1.5.8'
+gem 'dragonfly', '~> 1.1', '>= 1.1.4'
+gem 'rqrcode_png', '~> 0.1.5'
+gem 'rqrcode'
+gem 'chunky_png'
+
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

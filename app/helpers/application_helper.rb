@@ -1,4 +1,9 @@
 module ApplicationHelper
+   require 'rqrcode'
+   require 'rqrcode_png'
+   require 'chunky_png'
+   
+   
     # ページごとの完全なタイトルを返します。
   def full_title(page_title = '')
     base_title = "Stress App"
@@ -126,6 +131,12 @@ module ApplicationHelper
     return date.strftime("%Y年%m月%d日 %H時%M分") 
   end
 
+
+
+  def qrcode_tag(text, options = {})
+    qr = ::RQRCode::QRCode.new(text)
+    return ChunkyPNG::Image.from_datastream(qr.as_png.resize(250,250).to_datastream).to_data_url
+  end
   
 
 end

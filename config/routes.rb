@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   post   '/login_employee',   to: 'sessions#create_employee'
   delete '/logout',  to: 'sessions#destroy'
   delete '/logout_employee',  to: 'sessions#destroy_employee'
-  resources :companies
+  resources :companies 
   resources :departments, only: [:new, :create, :show]
+
   resources :employees, only: [:new, :create, :show]
   resources :values, only: [:new, :create, :show, :index]
   resources :relationships,       only: [:create, :destroy]

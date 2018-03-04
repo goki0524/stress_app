@@ -23,7 +23,7 @@ class DepartmentsController < ApplicationController
   private 
   
     def department_params
-      params.require(:department).permit(:department_name, :employee_number)
+      params.require(:department).permit(:department_name, :employee_number, :qr_code)
     end
     
 end
