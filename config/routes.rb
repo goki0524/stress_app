@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   delete '/logout_employee',  to: 'sessions#destroy_employee'
   resources :companies 
   resources :departments, only: [:new, :create, :show]
-
   resources :employees, only: [:new, :create, :show]
   resources :values, only: [:new, :create, :show, :index]
   resources :relationships,       only: [:create, :destroy]
+  resources :account_activations, only: [:edit]
 end
