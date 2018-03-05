@@ -8,8 +8,15 @@ class SessionsController < ApplicationController
   def create
     company = Company.find_by(company_email: params[:session][:company_email].downcase)
     if company && company.authenticate(params[:session][:password])
-      log_in_company(company)
-      redirect_to company
+      if company.activated?
+        log_in_company(company)
+        redirect_to company
+      else
+        message  = "Account not activated. "
+        message += "Check your email for the activation link."
+        flash[:warning] = message
+        redirect_to root_url
+      end
     else
       flash.now[:danger] = 'Invalid email/password combination' 
       render 'new'

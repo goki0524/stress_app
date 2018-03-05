@@ -11,6 +11,13 @@ Rails.application.configure do
 
   # Show full error reports.
   config.consider_all_requests_local = true
+  
+  # 送信メールプレピューの設定
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :test
+  host = 'https://stress-app-goki0524.c9users.io' 
+  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  
 
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?

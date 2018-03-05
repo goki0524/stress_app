@@ -19,9 +19,9 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
-      log_in_company(@company)
-      flash[:success] = "Welcome to the Stress App!"
-      redirect_to @company
+      @company.send_activation_email
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
     else
       render 'new'
     end
