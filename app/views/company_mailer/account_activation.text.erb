@@ -2,4 +2,4 @@ Hi <%= @company.company_name %>,
 
 Welcome to the Sample App! Click on the link below to activate your account:
 
-<%= edit_account_activation_url(@company.activation_token, company_email: @company.company_email) %>
+<%= edit_account_activation_url(@company.activation_token, email: @company.company_email) %>
