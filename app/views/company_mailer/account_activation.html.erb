@@ -6,5 +6,5 @@
 Welcome to the Sample App! Click on the link below to activate your account:
 </p>
 
-<%= link_to "Activate", edit_account_activation_url(@company.activation_token, 
-                         company_email: @company.company_email)  %>
+<%= link_to "Activate", edit_account_activation_url(@company.activation_token,
+        email: @company.company_email)  %>

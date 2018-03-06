@@ -30,6 +30,7 @@ class Company < ApplicationRecord
     BCrypt::Password.new(digest).is_password?(token)
   end
   
+  
   # アカウントを有効にする
   def activate
     update_columns(activated: true, activated_at: Time.zone.now)
