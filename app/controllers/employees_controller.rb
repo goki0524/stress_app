@@ -21,10 +21,6 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
     @company_name = @employee.relationships.map{ |i|
       i.department.company.company_name }
-    
-    
-    
-    
   end
 
 
