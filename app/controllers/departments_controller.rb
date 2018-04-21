@@ -1,5 +1,6 @@
 class DepartmentsController < ApplicationController
   before_action :logged_in_company, only:[:new, :create]
+  before_action :logged_in_company_or_employee, only:[:show]
   
   def new
     @department = current_company.departments.build

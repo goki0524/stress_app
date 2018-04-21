@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   # beforeアクション
 
-  # ログイン済みかどうか確認
+  # companyログイン済みかどうか確認
   def logged_in_company
     unless logged_in_company?
       flash[:danger] = "Please log in."
@@ -12,9 +12,19 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  # ログイン済みかどうか確認
+  # employeeログイン済みかどうか確認
   def logged_in_employee
     unless logged_in_employee?
+      flash[:danger] = "Please log in."
+      redirect_to login_employee_url
+    end
+  end
+  
+  def logged_in_company_or_employee
+    if !logged_in_company?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    elsif !logged_in_employee?
       flash[:danger] = "Please log in."
       redirect_to login_employee_url
     end
