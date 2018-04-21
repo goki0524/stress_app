@@ -21,12 +21,9 @@ class ApplicationController < ActionController::Base
   end
   
   def logged_in_company_or_employee
-    if !logged_in_company? && logged_in_employee?
+    unless logged_in_company? || logged_in_employee?
       flash[:danger] = "Please log in."
-      redirect_to login_url
-    elsif !logged_in_employee? && logged_in_company?
-      flash[:danger] = "Please log in."
-      redirect_to login_employee_url
+      redirect_to root_url
     end
   end
   
