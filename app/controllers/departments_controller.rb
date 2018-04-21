@@ -8,6 +8,7 @@ class DepartmentsController < ApplicationController
   def create
     @department = current_company.departments.build(department_params)
     if @department.save
+      @department.send_qrcode_email
       flash[:success] = "Department created!"
       redirect_to current_company
     else
@@ -23,7 +24,7 @@ class DepartmentsController < ApplicationController
   private 
   
     def department_params
-      params.require(:department).permit(:department_name, :employee_number, :qr_code)
+      params.require(:department).permit(:department_name, :employee_number)
     end
     
 end

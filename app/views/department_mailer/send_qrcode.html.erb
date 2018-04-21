@@ -1,0 +1,11 @@
+<h1>Stress App</h1>
+
+<p>Hi <%= @company.company_name %>,</p>
+
+<p>部署</p>
+<p><%= link_to "部署URL", @department_url %></p>
+<%= image_tag qrcode_tag "#{@department_url}"%>
+
+<p>会社</p>
+<p><%= link_to "会社URL", @company_url %></p>
+<%= image_tag qrcode_tag "#{@company_url}"%>
