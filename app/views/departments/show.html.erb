@@ -2,8 +2,6 @@
 
 <%= image_tag qrcode_tag "#{department_url}"%>
 
-
-
   <h2>部署名：<%= @department.department_name %></h2>
   <h2>従業員数：<%= @department.employee_number %></h2>
   <h2>所属している会社員<% @department.relationships.each do |i| %> 
@@ -33,8 +31,6 @@
  
   <% end %>
   
- 
-  
-<%= image_tag @department.qr_code.url %>
+
   
 <% end %>
