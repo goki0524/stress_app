@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :values, only: [:new, :create, :show, :index]
   resources :relationships,       only: [:create, :destroy]
   resources :account_activations, only: [:edit]
+  resources :projects, only: [:new, :create, :show]
 end

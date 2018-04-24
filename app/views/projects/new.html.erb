@@ -1,0 +1,23 @@
+<% provide(:title, 'Project New') %>
+<h1>実施回作成</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @project do |f| %>
+    
+      <%= f.label :project_name, "実施回名" %>
+      <%= f.text_field :project_name, class: 'form-control' %>
+      
+      <%= f.label :start_date, "開始日" %>
+      <%= f.date_select :start_date, {}, class: 'form-control' %>
+      
+      <%= f.label :end_date, "終了日" %>
+      <%= f.date_select :end_date, {}, class: 'form-control' %>
+      
+      <%= f.label :employee_number, "受検対象者人数" %>
+      <%= f.number_field :employee_number %>
+      
+      <%= f.submit "登録", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

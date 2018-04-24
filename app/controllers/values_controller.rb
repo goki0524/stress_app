@@ -230,7 +230,8 @@ class ValuesController < ApplicationController
     end
     
     def correct_employee
-      redirect_to(root_url) unless current_employee == Value.find(params[:id]).employee
+      redirect_to(root_url) unless 
+      current_employee == Value.find(params[:id]).employee
     end
     
     def replace(x)
