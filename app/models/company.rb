@@ -1,6 +1,7 @@
 class Company < ApplicationRecord
   attr_accessor :activation_token
   has_many :departments, dependent: :destroy
+  has_many :projects, dependent: :destroy
   before_save   :downcase_company_email
   before_create :create_activation_digest
   validates :company_name, presence: true, length: { maximum: 50 }

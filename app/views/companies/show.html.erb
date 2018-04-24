@@ -2,13 +2,22 @@
 
   <h1>会社名：<%= @company.company_name %></h1>
   <h1>Email：<%= @company.company_email %></h1>
-  <p>＜部署＞</p>
-     <% @company.departments.each do |d| %>
-      <p>部署名:<%= link_to "#{d.department_name}", department_path(d.id) %></p>
-
-       <p>部署人数：<%= d.employee_number %>人</p><br>
-     <% end %>
-     
-<%= link_to "部署を追加する", new_department_path, class: "btn btn-lg btn-primary" %>
-
+  
+  <%= link_to "部署を作成する", new_department_path, class: "btn btn-lg btn-primary" %>
+  <%= link_to "実施回を作成する", new_project_path, class: "btn btn-lg btn-primary" %>
     
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <p>＜部署＞</p>
+         <% @company.departments.each do |d| %>
+          <p>部署名:<%= link_to "#{d.department_name}", department_path(d.id) %></p>
+    
+           <p>部署人数：<%= d.employee_number %>人</p><br>
+         <% end %>
+         
+      <p>＜実施回＞</p>
+       <% @company.projects.each do |i| %>
+        <p>実施回名:<%= link_to "#{i.project_name}", project_path(i.id) %></p>
+       <% end %>
+    </div>
+  </div>
