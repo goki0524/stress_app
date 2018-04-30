@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
-
+  
   # beforeアクション
 
   # companyログイン済みかどうか確認

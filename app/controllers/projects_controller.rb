@@ -21,6 +21,8 @@ class ProjectsController < ApplicationController
   def show
     @company = current_company
     @project = Project.find(params[:id])
+    @values = @project.values
+    @high_stress_count = 0
   end
   
   private
@@ -34,4 +36,6 @@ class ProjectsController < ApplicationController
       redirect_to(root_url) unless 
       current_company == Project.find(params[:id]).company
     end
+    
+    
 end

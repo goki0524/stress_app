@@ -22,12 +22,21 @@ class ValuesController < ApplicationController
   
   def show
     @employee = current_employee
+    @departments = current_employee.departments
+    @correct_projects = []
+    @departments.each do |department|
+      department.company.projects.each do |project|
+      @correct_projects << project.correct_project unless project.correct_project == nil
+      end
+    end
+    
     @value = Value.find(params[:id])  
     
     @count_a = 0
     @count_b = 0
     @count_c = 0
-
+    
+    #TODO:リファクタリング必要
     #--------A項目(ストレスの原因と考えられる因子)--------
      #a1~a7,a11~a13,a15は数値が低ければストレスが高い(値を置き換える)→replace関数を使う
     r_a1 = replace(@value.a1)
@@ -146,7 +155,7 @@ class ValuesController < ApplicationController
     sigoto_seikatu_manzokudo = (r_c1 + r_c2) / 2
     
     stress_value_a = [sigoto_ryou, sigoto_situ, sintaihutando, taizinkankei, syokubakankyou, control, katuyoudo, tekiseido, hatarakigai]
-    stress_value_a_border = [2, 2, 2, 2, 2, 2, 2, 2, 2] #あとで高ストレスの値を算出しボーダーラインに変える
+    stress_value_a_border = [2, 2, 2, 2, 2, 2, 2, 2, 2] #TODO:あとで高ストレスの値を算出しボーダーラインに変える
     stress_value_b = [kakki, iraira, hiroukan, huankan, yokuutukan, sintaisyuuso]
     stress_value_b_border = [2, 2, 2, 2, 2, 2]
     stress_value_c = [zyousi, douryou, kazoku_yuuzin, sigoto_seikatu_manzokudo]
