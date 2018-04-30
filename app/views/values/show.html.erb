@@ -1,7 +1,47 @@
 <% provide(:title, 'Stress Check Show') %>
 <h1>Stress Check Show</h1>
 <div class = "profile">
+    <%= date_conversion(@value.created_at) %>
     <h1><%= @employee.first_name + @employee.last_name %>さんのストレスプロフィール</h1>
+    <% @departments.each do |d| %>
+        <p>会社:<%= d.company.company_name %></p>
+        <p>部署:<%= d.department_name %></p>
+        <p>実施回:<% d.company.projects.each do |i| %></p>
+                    
+                    <%= i.start_date %>〜<%= i.end_date %>
+                    <%= i.project_name %>
+
+                  <% end %>
+    <% end %>
+    
+    <h1>期間中の実施回</h1>
+    <% @correct_projects.each do |project| %>
+      <% if @value.belong?(project) %>
+        <%= form_for(@value.project_values.find_by(project_id: project.id),
+              html: { method: :delete }) do |f|  %>
+          <div><%= project.project_name %></div>
+          <div>期間：<%= project.start_date %>〜<%= project.end_date %></div>
+          <div><%= hidden_field_tag :value_id, @value.id %></div>
+          <%= f.submit "提出しない", class: "btn" %>
+        <% end %>
+      
+      <% elsif project.start_date <= @value.created_at && @value.created_at <= project.end_date %>
+        <%= form_for(@value.project_values.build) do |f| %>
+          <div><%= project.project_name %></div>
+          <div>期間：<%= project.start_date %>〜<%= project.end_date %></div>
+          <div><%= hidden_field_tag :project_id, project.id %></div>
+          <div><%= hidden_field_tag :value_id, @value.id %></div>
+          <%= f.submit "提出する", class: "btn btn-primary" %>
+        <% end %>
+        
+       <% else %>
+       <p><%= project.project_name %>は期間外なので提出できません</p>
+      <% end %>
+        
+    <% end %>
+    
+    
+    
 </div>
 <br/>
 

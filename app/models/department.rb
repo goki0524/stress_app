@@ -1,6 +1,6 @@
 class Department < ApplicationRecord
   belongs_to :company
-  has_many :relationships
+  has_many :relationships, dependent: :destroy
   has_many :employees, through: :relationships
   validates :company_id, presence: true
   validates :department_name, presence: true, length: { maximum: 50 }

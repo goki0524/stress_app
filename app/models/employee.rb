@@ -1,6 +1,6 @@
 class Employee < ApplicationRecord
   has_many :values, dependent: :destroy
-  has_many :relationships
+  has_many :relationships, dependent: :destroy
   has_many :departments, through: :relationships
   before_save { email.downcase! }
   validates :first_name, presence: true, length: { maximum: 20 }
@@ -38,10 +38,6 @@ class Employee < ApplicationRecord
     departments.delete(department)
   end
   
-
   
-  
-  
-
   
 end

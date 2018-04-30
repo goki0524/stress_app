@@ -1,12 +1,13 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "stress app", root_path, id: "logo" %>
+    <% if logged_in_company? %>
+
+    <%= link_to "stress app", current_company, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Home", current_company %></li>
         <li><%= link_to "Help", help_path %></li>
-        <% if logged_in_company? %>
-          <li><%= link_to "Companies", '#' %></li>
+        <li><%= link_to "Companies", '#' %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>
@@ -21,7 +22,12 @@
             </ul>
           </li>
           
-          <% elsif logged_in_employee? %>
+    <% elsif logged_in_employee? %>
+      <%= link_to "stress app", current_employee, id: "logo" %>
+      <nav>
+      <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Home", current_employee %></li>
+          <li><%= link_to "Help", help_path %></li>
           <li><%= link_to "Employees", '#' %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -38,9 +44,15 @@
           </li>
           
         <% else %>
+        <%= link_to "stress app", root_path, id: "logo" %>
+        <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Help", help_path %></li>
           <li><%= link_to "Company Log in", login_path %></li>
           <li><%= link_to "Employee Log in", login_employee_path%></li>
         <% end %>
+
       </ul>
     </nav>
   </div>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'project_values/create'
+
+  get 'project_values/destroy'
+
   root 'static_pages#home'
   get  '/help',    to: 'static_pages#help'
   get  '/about',   to: 'static_pages#about'
@@ -17,4 +21,5 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
   resources :account_activations, only: [:edit]
   resources :projects, only: [:new, :create, :show]
+  resources :project_values,       only: [:create, :destroy]
 end
