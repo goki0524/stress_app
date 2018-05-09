@@ -4,8 +4,11 @@
 
 <p>部署</p>
 <p><%= link_to "部署URL", @department_url %></p>
-<%= image_tag qrcode_tag "#{@department_url}"%>
+<p><%= image_tag qrcode_tag "#{@department_url}"%></p>
+<p><img src="https://chart.googleapis.com/chart?chs=150x150&amp;cht=qr&amp;chl=<%= qrcode_tag "#{@department_url}" %>" alt="QR code"></p>
 
 <p>会社</p>
 <p><%= link_to "会社URL", @company_url %></p>
-<%= image_tag qrcode_tag "#{@company_url}"%>
+<p><%= image_tag qrcode_tag "#{@company_url}"%></p>
+<p><img src="https://chart.googleapis.com/chart?chs=150x150&amp;cht=qr&amp;chl=<%= qrcode_tag "#{@company_url}" %>" alt="QR code"></p>
+
