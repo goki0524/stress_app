@@ -20,6 +20,21 @@ class ValuesController < ApplicationController
     end
   end
   
+  def interview_confirm
+    @employee = current_employee
+    @value = Value.find(params[:id])
+  end
+  
+  def interview
+    @value = Value.find(params[:id])
+    if @value.update(interview: true)
+      flash[:success] = "担当者へ連絡しました。"
+      redirect_to @value
+    else
+      render "interview_confirm"
+    end
+  end
+  
   def show
     @employee = current_employee
     @departments = current_employee.departments
@@ -235,7 +250,7 @@ class ValuesController < ApplicationController
       :a10, :a11, :a12, :a13, :a14, :a15, :a16, :a17, :b1, :b2, :b3, :b4, :b5,
       :b6, :b7, :b8, :b9, :b10, :b11, :b12, :b13, :b14, :b15, :b16, :b17, :b18,
       :b19, :b20, :b21, :b22, :b23, :b24, :b25, :b26, :b27, :b28, :b29, :c1, :c2,
-      :c3, :c4, :c5, :c6, :c7, :c8, :c9, :d1, :d2)
+      :c3, :c4, :c5, :c6, :c7, :c8, :c9, :d1, :d2, :interview)
     end
     
     def correct_employee

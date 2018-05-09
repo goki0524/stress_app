@@ -23,6 +23,12 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @values = @project.values
     @high_stress_count = 0
+    @interview_count = 0
+    
+    @values.each do |value|
+       @high_stress_count += 1 if value.high_value? 
+       @interview_count += 1 if value.interview == true
+    end
   end
   
   private

@@ -17,7 +17,12 @@ Rails.application.routes.draw do
   resources :companies 
   resources :departments, only: [:new, :create, :show]
   resources :employees, only: [:new, :create, :show]
-  resources :values, only: [:new, :create, :show, :index]
+  resources :values, only: [:new, :create, :show, :index] do
+    member do
+      get :interview_confirm
+      post :interview
+    end
+  end
   resources :relationships,       only: [:create, :destroy]
   resources :account_activations, only: [:edit]
   resources :projects, only: [:new, :create, :show]
