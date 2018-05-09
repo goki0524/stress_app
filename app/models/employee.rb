@@ -28,16 +28,24 @@ class Employee < ApplicationRecord
      departments << department
   end
   
+  #部署に所属しているか判定
   def belong?(department)
     # relationships.find_by(department_id: department.id)
     departments.include?(department)
   end
   
+  #部署を抜ける
   def escape(department)
     # relationships.find_by(department_id: department.id).delete
     departments.delete(department)
   end
   
-  
+  #従業員の所属する会社に面談のメールを送信
+  def send_interview_mail
+    if departments.present?
+      companies = departments.map { |d| d.company }
+      EmployeeMailer.send_interview_mail(self, companies)
+    end
+  end 
   
 end

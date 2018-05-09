@@ -30,6 +30,7 @@ class ValuesController < ApplicationController
     if @value.update(interview: true)
       flash[:success] = "担当者へ連絡しました。"
       redirect_to @value
+      current_employee.send_interview_mail
     else
       render "interview_confirm"
     end
