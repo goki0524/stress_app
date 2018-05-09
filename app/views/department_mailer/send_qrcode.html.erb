@@ -1,12 +1,22 @@
 <h1>Stress App</h1>
 
-<p>Hi <%= @company.company_name %>,</p>
+<p><%= link_to "#{@company.company_name}", @company_url %>の担当者様へ</p>
+<ul>
+  <li>登録された部署に所属される従業員様へ下記のQRコードを配布してください。（印刷またはEmailをお使いください）
+</ul>
 
-<p>部署</p>
-<p><%= link_to "部署URL", @department_url %></p>
+________________________________________________________________________________________________________________</br>
+
+<p>部署名：<%= link_to "#{@department.department_name}", @department_url %></p>
 <p><img src="https://chart.googleapis.com/chart?chs=150x150&amp;cht=qr&amp;chl=<%= "#{@department_url}" %>" alt="QR code"></p>
+<p>↑上記のQRコードからアクセスしてください</p>
+</br>
+<p>＜ストレスチェックの流れ＞</p>
+<p>1. 従業員アカウントを作成してください。</p>
+<p>2. 従業員でログイン後、QRコードから部署ページに移動し「所属する」を押してください。</p>
+<p>3. 「ストレスチェックをする」を押し、質問に答えてください。</p>
+<p>4. 結果が表示されますので、適切な実施回を選択して「提出する」を押してください。</p>
+<p>5. あなたのストレスプロフィールのページを印刷し、終了となります。</p>
+<p>（＊高ストレス者と判定された方は、産業医との面談の有無について選択してください）</p>
 
-<p>会社</p>
-<p><%= link_to "会社URL", @company_url %></p>
-<p><img src="https://chart.googleapis.com/chart?chs=150x150&amp;cht=qr&amp;chl=<%= "#{@company_url}" %>" alt="QR code"></p>
 
