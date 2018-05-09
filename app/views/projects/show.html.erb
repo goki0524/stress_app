@@ -5,17 +5,27 @@
 <p>受検対象者人数:<%= @project.employee_number %>人</p>
 <p>受検終了者人数:<%= @values.count %>人</p>
 <p>未受検者人数:<%= @project.employee_number - @values.count %>人</p>
+<p>高ストレス者：<%= @high_stress_count %>人</p>
+<p>面談希望者：<%= @interview_count  %>人</p>
+  <ul>
+    <% @values.each do |value| %>
+      <% if value.interview == true %>
+        <li><%= value.employee.first_name %><%= value.employee.last_name %></li>
+        <%= value.employee.email %> 
+      <% end %>
+    <% end %>
+  </ul>
 <p>受検終了者名</p>
 <ul>
 <% @values.each do |value| %>
   <li>従業員名：<%= value.employee.first_name %><%= value.employee.last_name %></br>
   ストレスID：<%= value.id %></br>
   高ストレス：<% if value.high_value? %>
-                <% @high_stress_count += 1 %>
                 <%= "有" %>  
               <% else %>
                 <%= "無" %>  
               <% end %>
 <% end %>
 </ul>
-<p>高ストレス者数：<%= @high_stress_count %>人</p>
+
+

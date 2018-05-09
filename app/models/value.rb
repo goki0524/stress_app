@@ -62,14 +62,32 @@ class Value < ApplicationRecord
   validates :d1, numericality: { only_integer: true, greater_than: 0, less_than: 5 }
   validates :d2, numericality: { only_integer: true, greater_than: 0, less_than: 5 }
  
+  #実施回とストレス値の関連付け
   def belong(project)
     projects << project
   end
   
+  #実施回とストレス値の関連付けがあるか
   def belong?(project)
     projects.include?(project)
   end
   
+  #実施回と従業員のストレス値(self以外)の関連付があればtrue
+  def super_belong?(project)
+    other_values = []
+    self.employee.values.each do |value|
+      if value != self && !value.blank?
+        other_values << value
+      else
+        return false
+      end
+    end
+    other_values.each do |other_value|
+      other_value.belong?(project) ? true : false
+    end
+  end
+  
+  #実施回とストレス値の関連付けを解消
   def escape(project)
     projects.delete(project)
   end
@@ -87,6 +105,7 @@ class Value < ApplicationRecord
     end
   end
   
+  #高ストレスか判定
   def high_value?
     count_a = 0
     count_b = 0
@@ -129,6 +148,5 @@ class Value < ApplicationRecord
       false
     end
   end
-  
   
 end

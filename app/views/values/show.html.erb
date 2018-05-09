@@ -25,7 +25,7 @@
           <%= f.submit "提出しない", class: "btn" %>
         <% end %>
       
-      <% elsif project.start_date <= @value.created_at && @value.created_at <= project.end_date %>
+      <% elsif project.start_date <= @value.created_at && @value.created_at <= project.end_date && !@value.super_belong?(project) %>
         <%= form_for(@value.project_values.build) do |f| %>
           <div><%= project.project_name %></div>
           <div>期間：<%= project.start_date %>〜<%= project.end_date %></div>
@@ -33,6 +33,9 @@
           <div><%= hidden_field_tag :value_id, @value.id %></div>
           <%= f.submit "提出する", class: "btn btn-primary" %>
         <% end %>
+        
+      <% elsif @value.super_belong?(project) %>
+        <p><%= project.project_name %>は他のストレス値が提出されています</p>  
         
        <% else %>
        <p><%= project.project_name %>は期間外なので提出できません</p>
@@ -88,4 +91,8 @@
     を多く受けていることを自覚して、勤務時間外や休日はなるべく仕事を持ち帰らず、リフレッシュに努めましょう。
 </div>
 <br/>
-<%= link_to "ユーザページへ戻る", employee_path(@employee) %>
+<input type="button" value="このページを印刷" onclick="window.print();">
+  <% if @value.high_value? %>
+    <%= link_to "次へ", interview_confirm_value_path(@value)  %> </br>
+  <% end %>
+<%= link_to "ユーザページへ戻る", employee_path(@employee) %> 
