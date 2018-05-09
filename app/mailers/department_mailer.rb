@@ -5,6 +5,6 @@ class DepartmentMailer < ApplicationMailer
     @department_url = url_for([@department, only_path: false])
     @company = @department.company
     @company_url = url_for([@company, only_path: false])
-    mail to: @company.company_email, subject: "QRcode" 
+    mail to: @company.company_email, subject: "#{@department.department_name}を追加しました" 
   end
 end
