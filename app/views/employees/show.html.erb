@@ -10,7 +10,8 @@
      <li><%= link_to "#{i.department.department_name}", department_path(i.department) %></li>
     <% end %>
   </h2>
-<%= link_to "Stress Check!", new_value_path %>
+  
+  <p><%= link_to "ストレスチェック", new_value_path, class: "btn btn-lg btn-primary" %></p>
 
   <% @employee.values.each do |v| %>
     <li>

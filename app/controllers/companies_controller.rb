@@ -18,7 +18,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
     if @company.save
       @company.send_activation_email
-      flash[:info] = "Please check your email to activate your account."
+      flash[:info] = "Emailを確認しアカウントを有効にしてください"
       redirect_to root_url
     else
       render 'new'

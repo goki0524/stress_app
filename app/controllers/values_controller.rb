@@ -10,7 +10,7 @@ class ValuesController < ApplicationController
   def create
     @value = current_employee.values.build(value_params)
     if @value.save
-      flash[:success] = "Finish Stress Check!"
+      flash[:success] = "ストレスチェックが終了しました。"
       redirect_to value_path(@value)
     else
       render 'new'
@@ -35,7 +35,7 @@ class ValuesController < ApplicationController
   
   def send_email
     @value = Value.find(params[:id])
-    flash[:success] = "結果をメールで送信しました。"
+    flash[:success] = "ストレスチェックの結果をEmailで送信しました。"
     redirect_to @value
     current_employee.send_result_mail(@value)
   end
@@ -258,7 +258,6 @@ class ValuesController < ApplicationController
       :c3, :c4, :c5, :c6, :c7, :c8, :c9, :d1, :d2, :interview)
     end
     
-    #TODO: 永続クッキーとフレンドリーフォワーディング追加後変更する.Mailer/send_result_mailの@value_urlからView#showへ飛べない.
     def correct_employee
       redirect_to(root_url) unless 
       current_employee == Value.find(params[:id]).employee

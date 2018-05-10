@@ -10,7 +10,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
     if @employee.save
       log_in_employee(@employee)
-      flash[:success] = "Welcome to the Stress App!"
+      flash[:success] = "ようこそ、Stress Appへ！"
       redirect_to @employee
     else
       render 'new'

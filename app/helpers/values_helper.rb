@@ -1,3 +1,2 @@
 module ValuesHelper
-
 end

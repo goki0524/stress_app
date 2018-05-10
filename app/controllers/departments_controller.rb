@@ -10,7 +10,7 @@ class DepartmentsController < ApplicationController
     @department = current_company.departments.build(department_params)
     if @department.save
       @department.send_qrcode_email
-      flash[:success] = "Department created!"
+      flash[:success] = "部署が作成されました。"
       redirect_to current_company
     else
       render 'new'

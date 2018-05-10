@@ -15,5 +15,4 @@ class EmployeeMailer < ApplicationMailer
     mail to: @employee.email, subject: "#{@employee.first_name + @employee.last_name}様のストレスチェック結果"
   end
   
-  
 end
