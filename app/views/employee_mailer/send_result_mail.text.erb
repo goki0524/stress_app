@@ -1,3 +1,11 @@
 Stress App
 <%= @employee.first_name + @employee.last_name %>様のストレスプロフィール
-結果
+＜結果＞
+<% if @value.high_value? %>
+  <%= "高ストレス者と判定されました。" %>
+<% else %>
+  <%= "高ストレスではありません。" %>
+<% end %>
+
+詳細の結果は下記のURLからご覧ください。↓
+<%= link_to "#{@value_url}", @value_url %>
