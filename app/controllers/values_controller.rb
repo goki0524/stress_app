@@ -258,7 +258,7 @@ class ValuesController < ApplicationController
       :c3, :c4, :c5, :c6, :c7, :c8, :c9, :d1, :d2, :interview)
     end
     
-    #TODO: 永続クッキーとフレンドリーフォワーディング追加後変更する
+    #TODO: 永続クッキーとフレンドリーフォワーディング追加後変更する.Mailer/send_result_mailの@value_urlからView#showへ飛べない.
     def correct_employee
       redirect_to(root_url) unless 
       current_employee == Value.find(params[:id]).employee
