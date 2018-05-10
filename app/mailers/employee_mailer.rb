@@ -4,7 +4,7 @@ class EmployeeMailer < ApplicationMailer
     @employee = employee
     company_emails = companies.map{ |c| c.company_email }
     for company_email in company_emails
-      mail to: company_email, subject: "高ストレス者からの面談希望" 
+      mail to: company_email, subject: "高ストレス者からの面談希望の通知" 
     end
   end
   

@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :logged_in_not_loginpage, only:[:new, :new_employee]
+  
   def new
   end
   
@@ -9,6 +11,8 @@ class SessionsController < ApplicationController
     company = Company.find_by(company_email: params[:session][:company_email].downcase)
     if company && company.authenticate(params[:session][:password])
       if company.activated?
+        #２重でログインさせないため
+        log_out_employee if logged_in_employee?
         log_in_company(company)
         redirect_to company
       else
@@ -26,6 +30,8 @@ class SessionsController < ApplicationController
   def create_employee
     employee = Employee.find_by(email: params[:session][:email].downcase)
     if employee && employee.authenticate(params[:session][:password])
+      #２重でログインさせないため
+      log_out_company if logged_in_company?
       log_in_employee(employee)
       redirect_to employee
     else
@@ -43,4 +49,12 @@ class SessionsController < ApplicationController
     log_out_employee
     redirect_to root_url
   end
+  
+  private
+  
+    def logged_in_not_loginpage
+      if logged_in_company? || logged_in_employee?
+        redirect_to root_url
+      end
+    end
 end
