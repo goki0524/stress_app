@@ -1,0 +1,11 @@
+<h1>Stress App</h1>
+<p><%= @employee.first_name + @employee.last_name %>様のストレスプロフィール</p>
+<p>＜結果＞</p>
+<% if @value.high_value? %>
+  <p><%= "高ストレス者と判定されました。" %></p>
+<% else %>
+  <p><%= "高ストレスではありません。" %></p>
+<% end %>
+
+<p>詳細の結果は下記のURLからご覧ください。↓</p>
+<p><%= link_to "#{@value_url}", @value_url %></p>

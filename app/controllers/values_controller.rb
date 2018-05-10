@@ -1,9 +1,6 @@
 class ValuesController < ApplicationController
-  before_action :logged_in_employee, only:[:new, :create, :show, :index]
+  before_action :logged_in_employee, only:[:new, :create, :show]
   before_action :correct_employee, only:[:show]
-  
-  def index
-  end
   
   def new
     @employee = current_employee
@@ -34,6 +31,13 @@ class ValuesController < ApplicationController
     else
       render "interview_confirm"
     end
+  end
+  
+  def send_email
+    @value = Value.find(params[:id])
+    flash[:success] = "結果をメールで送信しました。"
+    redirect_to @value
+    current_employee.send_result_mail(@value)
   end
   
   def show
@@ -254,6 +258,7 @@ class ValuesController < ApplicationController
       :c3, :c4, :c5, :c6, :c7, :c8, :c9, :d1, :d2, :interview)
     end
     
+    #TODO: 永続クッキーとフレンドリーフォワーディング追加後変更する
     def correct_employee
       redirect_to(root_url) unless 
       current_employee == Value.find(params[:id]).employee
