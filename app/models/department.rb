@@ -7,7 +7,6 @@ class Department < ApplicationRecord
   validates :employee_number, numericality: { only_integer: true, 
                   greater_than: 0 }
   
-  
   # Departmentが新規作成された時にCompanyにEmailを送る
   def send_qrcode_email
     DepartmentMailer.send_qrcode(self).deliver_now

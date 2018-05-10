@@ -16,13 +16,13 @@ class SessionsController < ApplicationController
         log_in_company(company)
         redirect_to company
       else
-        message  = "Account not activated. "
-        message += "Check your email for the activation link."
+        message  = "アカウントが有効ではありません。"
+        message += "Emailを確認しアカウントを有効にしてください。"
         flash[:warning] = message
         redirect_to root_url
       end
     else
-      flash.now[:danger] = 'Invalid email/password combination' 
+      flash.now[:danger] = 'Emailまたはパスワードが間違えています。' 
       render 'new'
     end
   end
@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
       log_in_employee(employee)
       redirect_to employee
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = 'Emailまたはパスワードが間違えています。'
       render 'new_employee'
     end
   end

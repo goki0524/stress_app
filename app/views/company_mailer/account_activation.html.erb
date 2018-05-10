@@ -1,10 +1,10 @@
 <h1>Stress App</h1>
 
-<p>Hi <%= @company.company_name %>,</p>
+<p><%= @company.company_name %>様,</p>
 
 <p>
-Welcome to the Stress App! Click on the link below to activate your account:
+Stress Appへご登録いただきありがとうございます！下記のリンクをクリックしてアカウントを有効にしてください。
 </p>
 
-<%= link_to "Activate", edit_account_activation_url(@company.activation_token,
+<%= link_to "アカウントを有効にする", edit_account_activation_url(@company.activation_token,
         email: @company.company_email)  %>

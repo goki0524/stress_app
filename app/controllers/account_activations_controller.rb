@@ -4,10 +4,10 @@ class AccountActivationsController < ApplicationController
     if company && !company.activated? && company.authenticated?(:activation, params[:id])
       company.activate
       log_in_company(company)
-      flash[:success] = "Account activated!"
+      flash[:success] = "アカウントが有効になりました。"
       redirect_to company
     else
-      flash[:danger] = "Invalid activation link"
+      flash[:danger] = "リンクの期限が切れています。"
       redirect_to root_url
     end
   end

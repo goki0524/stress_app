@@ -1,5 +1,5 @@
-Hi <%= @company.company_name %>,
+<%= @company.company_name %>様,
 
-Welcome to the Stress App! Click on the link below to activate your account:
+Stress Appへご登録いただきありがとうございます！下記のリンクにアクセスしてアカウントを有効にしてください。
 
 <%= edit_account_activation_url(@company.activation_token, email: @company.company_email) %>

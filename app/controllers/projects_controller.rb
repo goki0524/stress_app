@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
   def create
     @project = current_company.projects.build(project_params)
     if @project.save
-      flash[:success] = "Project Created!"
+      flash[:success] = "実施回を作成しました。"
       redirect_to company_path(current_company)
     else
       render 'new'

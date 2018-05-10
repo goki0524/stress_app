@@ -1,5 +1,5 @@
-<% provide(:title, 'Stress Check Show') %>
-<h1>Stress Check Show</h1>
+<% provide(:title, 'ストレスプロフィール') %>
+<h1>ストレスプロフィール</h1>
 <div class = "profile">
     <%= date_conversion(@value.created_at) %>
     <h1><%= @employee.first_name + @employee.last_name %>さんのストレスプロフィール</h1>
@@ -98,6 +98,6 @@
       data: { confirm: "#{@employee.email}宛てにメール送ります。よろしいですか？" } %></p>
 
   <% if @value.high_value? %>
-    <%= link_to "次へ", interview_confirm_value_path(@value)  %> </br>
+    <p>あなたは高ストレスと判定されました、下記のページから産業医との面談希望の有無をお知らせください。</p>
+    <%= link_to "面談確認画面へ", interview_confirm_value_path(@value)  %> </br>
   <% end %>
-<%= link_to "ユーザページへ戻る", employee_path(@employee) %> 

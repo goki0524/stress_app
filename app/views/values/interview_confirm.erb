@@ -6,7 +6,7 @@
 <% if @value.interview == false && @value.projects.count > 0 %>
   
     <p><%= button_to "希望する", { :action => "interview", :id => @value.id }, 
-        data: { confirm: "面談希望の有無を会社担当者へ連絡しますがよろしいですか?" } %></p>
+        data: { confirm: "面談希望の有無を会社の担当者へ連絡しますがよろしいですか?" } %></p>
     <p><%= button_to "希望しない", { :action =>"show", :controller =>"employees", :id => @employee.id }, :method => :get %></p>
 <% elsif @value.interview == true %>
   <p>担当者からの連絡をお待ちください</p>

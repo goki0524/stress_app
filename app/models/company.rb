@@ -31,7 +31,6 @@ class Company < ApplicationRecord
     BCrypt::Password.new(digest).is_password?(token)
   end
   
-  
   # アカウントを有効にする
   def activate
     update_columns(activated: true, activated_at: Time.zone.now)
@@ -45,16 +44,16 @@ class Company < ApplicationRecord
 
   private
   
-    # メールアドレスをすべて小文字にする
-    def downcase_company_email
-      self.company_email = company_email.downcase
-    end
+  # メールアドレスをすべて小文字にする
+  def downcase_company_email
+    self.company_email = company_email.downcase
+  end
 
-    # 有効化トークンとダイジェストを作成および代入する
-    def create_activation_digest
-      self.activation_token  = Company.new_token
-      self.activation_digest = Company.digest(activation_token)
-    end
+  # 有効化トークンとダイジェストを作成および代入する
+  def create_activation_digest
+    self.activation_token  = Company.new_token
+    self.activation_digest = Company.digest(activation_token)
+  end
     
 end
 
