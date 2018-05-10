@@ -10,8 +10,8 @@ class EmployeeMailerPreview < ActionMailer::Preview
   
   # Preview this email at http://localhost:3000/rails/mailers/employee_mailer/send_result_mail
   def send_result_mail
-    employee = Employee.first
-    value = employee.values.first
+    employee = Employee.find_by(email: "test@test.com")
+    value = employee.values.last
     EmployeeMailer.send_result_mail(employee, value)
   end
 
