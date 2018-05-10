@@ -48,4 +48,9 @@ class Employee < ApplicationRecord
     end
   end 
   
+  #ストレスチェックの結果を自身のメールへ送信
+  def send_result_mail(value)
+    EmployeeMailer.send_result_mail(self, value).deliver_now
+  end
+  
 end

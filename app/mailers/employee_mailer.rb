@@ -8,5 +8,12 @@ class EmployeeMailer < ApplicationMailer
     end
   end
   
+  def send_result_mail(employee, value)
+    @employee = employee
+    @value = value
+    @value_url = url_for([@value, only_path: false])
+    mail to: @employee.email, subject: "#{@employee.first_name + @employee.first_name}様のストレスチェック結果"
+  end
+  
   
 end

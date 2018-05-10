@@ -91,7 +91,12 @@
     を多く受けていることを自覚して、勤務時間外や休日はなるべく仕事を持ち帰らず、リフレッシュに努めましょう。
 </div>
 <br/>
+
+
 <input type="button" value="このページを印刷" onclick="window.print();">
+<p><%= button_to "結果をメールで送る", { :action => "send_email", :id => @value.id },
+      data: { confirm: "#{@employee.email}宛てにメール送ります。よろしいですか？" } %></p>
+
   <% if @value.high_value? %>
     <%= link_to "次へ", interview_confirm_value_path(@value)  %> </br>
   <% end %>
