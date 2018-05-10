@@ -1,6 +1,10 @@
 <h1>Stress App</h1>
 
 <p>高ストレス者からの面談の希望がありました。</p>
-<p><%= @employee.first_name + @employee.last_name %>さん</p>
+<p>氏名：<%= @employee.first_name + @employee.last_name %>さん</p>
+<p>部署：<% @employee.relationships.each do |i| %>
+            <%= "#{i.department.department_name}" %>
+         <% end %>
+</p>
 <p>メールアドレス:<%= @employee.email %></p>
 <p>上記メールアドレスより、ご連絡して頂き産業医との面談日を決めてください。</p>
