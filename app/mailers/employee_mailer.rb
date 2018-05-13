@@ -12,7 +12,7 @@ class EmployeeMailer < ApplicationMailer
     @employee = employee
     @value = value
     @value_url = url_for([@value, only_path: false])
-    mail to: @employee.email, subject: "#{@employee.first_name + @employee.last_name}様のストレスチェック結果"
+    mail to: @employee.email, subject: "#{ @employee.full_name }様のストレスチェック結果"
   end
   
 end

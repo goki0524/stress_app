@@ -21,25 +21,30 @@ class Employee < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
   
-  #部署に所属する
+  # 氏名を返す
+  def full_name
+    first_name + last_name
+  end
+  
+  # 部署に所属する
   def belong(department)
     # relationships.create(department_id: department.id)
      departments << department
   end
   
-  #部署に所属しているか判定
+  # 部署に所属しているか判定
   def belong?(department)
     # relationships.find_by(department_id: department.id)
     departments.include?(department)
   end
   
-  #部署を抜ける
+  # 部署を抜ける
   def escape(department)
     # relationships.find_by(department_id: department.id).delete
     departments.delete(department)
   end
   
-  #従業員の所属する会社に面談のメールを送信
+  # 従業員の所属する会社に面談のメールを送信
   def send_interview_mail
     if departments.present?
       companies = departments.map { |d| d.company }
@@ -47,7 +52,7 @@ class Employee < ApplicationRecord
     end
   end 
   
-  #ストレスチェックの結果を自身のメールへ送信
+  # ストレスチェックの結果を自身のメールへ送信
   def send_result_mail(value)
     EmployeeMailer.send_result_mail(self, value).deliver_now
   end

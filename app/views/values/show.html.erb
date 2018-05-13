@@ -2,7 +2,7 @@
 <h1>ストレスプロフィール</h1>
 <div class = "profile">
     <%= date_conversion(@value.created_at) %>
-    <h1><%= @employee.first_name + @employee.last_name %>さんのストレスプロフィール</h1>
+    <h1><%= @employee.full_name %>さんのストレスプロフィール</h1>
     <% @departments.each do |d| %>
         <p>会社:<%= d.company.company_name %></p>
         <p>部署:<%= d.department_name %></p>

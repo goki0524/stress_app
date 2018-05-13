@@ -2,7 +2,6 @@ class ProjectsController < ApplicationController
   before_action :logged_in_company, only:[:new, :create, :show]
   before_action :correct_company, only:[:show]
   
-  
   def new
     @company = current_company
     @project = @company.projects.build
@@ -26,8 +25,8 @@ class ProjectsController < ApplicationController
     @interview_count = 0
     
     @values.each do |value|
-       @high_stress_count += 1 if value.high_value? 
-       @interview_count += 1 if value.interview == true
+      @high_stress_count += 1 if value.high_value? 
+      @interview_count += 1 if value.interview
     end
   end
   
