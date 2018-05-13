@@ -1,0 +1,20 @@
+<h1>Stress App</h1>
+
+<p>実施回[ <%= "#{@project.project_name}" %> ]の全ての受検対象者のストレスチェックが終了しました。</p>
+<p>受検対象者数：<%= @project.employee_number %>人</p>
+<p>受検終了者数:<%= @values.count %>人</p>
+<p>高ストレス者数： <%= @high_stress_count %>人</p>
+<p>面談希望者数：<%= @interview_count %>人</p>
+<p>面談希望者名：</p>
+<ul>
+    <% @values.each do |value| %>
+      <% if value.interview %>
+        <li><%= value.employee.full_name %></li>
+        <%= value.employee.email %> 
+      <% end %>
+    <% end %>
+  </ul>
+
+
+<p>実施回が終了しましたので、下記記載の銀行口座へストレスチェック料金
+<%= @price %>円をお振込ください。</p>

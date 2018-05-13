@@ -40,8 +40,12 @@ class Company < ApplicationRecord
   def send_activation_email
     CompanyMailer.account_activation(self).deliver_now
   end
-
-
+  
+  # 会社宛てに支払いメールを送信する
+  def send_payment_email(project)
+    CompanyMailer.send_payment(self, project).deliver_now
+  end
+  
   private
   
   # メールアドレスをすべて小文字にする

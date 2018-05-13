@@ -27,3 +27,4 @@ class Project < ApplicationRecord
   end
   
 end
+

@@ -1,6 +1,6 @@
 <% provide(:title, 'ストレスチェック') %>
 <h1>ストレスチェック</h1>
-<%= current_employee.first_name+current_employee.last_name %>
+<%= current_employee.full_name %>
 
 
 <%= form_for @value do |f| %>

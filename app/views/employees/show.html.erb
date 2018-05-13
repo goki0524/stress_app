@@ -1,6 +1,6 @@
-<% provide(:title, "#{ @employee.first_name + @employee.last_name }") %>
+<% provide(:title, "#{ @employee.full_name }") %>
 
-  <h2>名前：<%= @employee.first_name + @employee.last_name %></h2>
+  <h2>名前：<%= @employee.full_name %></h2>
   <h2>Email：<%= @employee.email %></h2>
   <h2>年齢：<%= @employee.age %>歳</h2>
   <h2>性別：<%= replace_sex(@employee.sex) %></h2>
