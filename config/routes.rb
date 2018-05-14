@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'project_values/create'
-
   get 'project_values/destroy'
 
   root 'static_pages#home'

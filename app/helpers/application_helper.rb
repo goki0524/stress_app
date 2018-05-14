@@ -5,7 +5,7 @@ module ApplicationHelper
    require "date"
    
    
-    # ページごとの完全なタイトルを返します。
+  # ページごとの完全なタイトルを返します。
   def full_title(page_title = '')
     base_title = "Stress App"
     if page_title.empty?
@@ -23,8 +23,7 @@ module ApplicationHelper
       "女性"
     end
   end
-  
-  
+
   def divide_a(x)
     case x
     when 1 then
@@ -77,7 +76,6 @@ module ApplicationHelper
     end
   end
   
-  
   def high_stress(count_a:, count_b:, count_c:)
     stress_sum = count_a + count_b + count_c
     high_stress = false
@@ -90,7 +88,6 @@ module ApplicationHelper
     end
     
   end
-  
   
   def stress_check(count_a:, count_b:, count_c:)
     stress_sum = count_a + count_b + count_c
@@ -132,13 +129,9 @@ module ApplicationHelper
     return date.strftime("%Y年%m月%d日 %H時%M分") 
   end
 
-
-
   def qrcode_tag(text, options = {})
     qr = ::RQRCode::QRCode.new(text)
     return ChunkyPNG::Image.from_datastream(qr.as_png.resize(250,250).to_datastream).to_data_url
   end
   
-  
-
 end

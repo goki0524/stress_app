@@ -244,7 +244,6 @@ class ValuesController < ApplicationController
               pointPlacement: 'on')
     end
     
-    
   end
   
   

@@ -20,4 +20,14 @@ class ActiveSupport::TestCase
     !session[:employee_id].nil?
   end
   
+  #テストcompanyとしてログインする
+  def log_in_as_company(company)
+    session[:company_id] = company.id
+  end
+  
+  #テストemployeeとしてログインする
+  def log_in_as_employee(employee)
+    session[:employee_id] = employee.id
+  end
+  
 end

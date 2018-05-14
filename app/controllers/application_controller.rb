@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  # companyかemployeeがログイン済みかどうか確認
   def logged_in_company_or_employee
     unless logged_in_company? || logged_in_employee?
       flash[:danger] = "ログインしてください。"
