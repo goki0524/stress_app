@@ -26,7 +26,6 @@ class CompaniesController < ApplicationController
   end
   
   
-  
   private
   
     def company_params

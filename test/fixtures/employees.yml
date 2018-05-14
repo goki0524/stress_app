@@ -6,10 +6,10 @@ employee_1:
   sex: 1
   password_digest: <%= Employee.digest('password') %>
   
-# employee_2:
-#   first_name: taro
-#   last_name: yamada
-#   email: employee_2@test.com
-#   age: 50
-#   sex: 2
-#   password_digest: <%= Employee.digest('password') %>
+employee_2:
+  first_name: taro
+  last_name: yamada
+  email: employee_2@test.com
+  age: 50
+  sex: 2
+  password_digest: <%= Employee.digest('password') %>
