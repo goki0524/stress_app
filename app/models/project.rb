@@ -5,7 +5,8 @@ class Project < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   validates :company_id, presence: true
   validates :project_name, presence: true, length: { maximum: 50 }
-  validates :employee_number, presence: true
+  validates :employee_number, numericality: { only_integer: true, 
+                  greater_than: 0 }
   validates :start_date, presence: true
   validates :end_date, presence: true
   validate :start_end_check
