@@ -1,14 +1,14 @@
-test_1:
-  company_name: test_1
-  company_email: test_1@test.com
+company_1:
+  company_name: company_1
+  company_email: company_1@test.com
   all_employee_number: 50
   password_digest: <%= Company.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
   
-test_2:
-  company_name: test_2
-  company_email: test_2@test.com
+company_2:
+  company_name: company_2
+  company_email: company_2@test.com
   all_employee_number: 50
   password_digest: <%= Company.digest('password') %>
   activated: true

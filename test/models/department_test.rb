@@ -3,7 +3,7 @@ require 'test_helper'
 class DepartmentTest < ActiveSupport::TestCase
   
   def setup
-    @company = companies(:test_1)
+    @company = companies(:company_1)
     @department = @company.departments.build(department_name: "sales", 
                   employee_number: 5)
   end
@@ -27,7 +27,12 @@ class DepartmentTest < ActiveSupport::TestCase
     assert_not @department.valid?
   end
   
-  test "employee_number should be integer and real number" do
+  test "employee number should be present" do
+    @department.employee_number = nil
+    assert_not @department.valid?
+  end
+  
+  test "employee number should be integer and real number" do
     @department.employee_number = 1.1
     assert_not @department.valid?
     @department.employee_number = 0
@@ -35,10 +40,5 @@ class DepartmentTest < ActiveSupport::TestCase
     @department.employee_number = -1
     assert_not @department.valid?
   end
-  
-  
-  
-  
-  
   
 end

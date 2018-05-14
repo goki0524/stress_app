@@ -1,11 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  department_name: MyString
-  employee_number: 1
-  company: one
+department_1:
+  department_name: department_1
+  employee_number: 10
+  company: company_1
 
-two:
-  department_name: MyString
-  employee_number: 1
-  company: two
