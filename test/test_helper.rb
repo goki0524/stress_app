@@ -31,3 +31,19 @@ class ActiveSupport::TestCase
   end
   
 end
+
+class ActionDispatch::IntegrationTest
+
+  # テストcompanyとしてログインする
+  def log_in_as_company(company, password: 'password')
+    post login_path, params: { session: { company_email: company.company_email,
+                                          password: password } }
+  end
+  
+   # テストemployeeとしてログインする
+  def log_in_as_employee(employee, password: 'password')
+    post login_employee_path, params: { session: { email: employee.email,
+                                                  password: password } }
+  end
+  
+end

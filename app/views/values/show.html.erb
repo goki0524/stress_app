@@ -21,7 +21,6 @@
               html: { method: :delete }) do |f|  %>
           <div><%= project.project_name %></div>
           <div>期間：<%= project.start_date %>〜<%= project.end_date %></div>
-          <div><%= hidden_field_tag :value_id, @value.id %></div>
           <%= f.submit "提出しない", class: "btn" %>
         <% end %>
       
