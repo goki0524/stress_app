@@ -4,7 +4,7 @@ class ValuesController < ApplicationController
   
   def new
     @employee = current_employee
-    @value = current_employee.values.build
+    @value = @employee.values.build
   end
   
   def create
@@ -254,7 +254,7 @@ class ValuesController < ApplicationController
       :a10, :a11, :a12, :a13, :a14, :a15, :a16, :a17, :b1, :b2, :b3, :b4, :b5,
       :b6, :b7, :b8, :b9, :b10, :b11, :b12, :b13, :b14, :b15, :b16, :b17, :b18,
       :b19, :b20, :b21, :b22, :b23, :b24, :b25, :b26, :b27, :b28, :b29, :c1, :c2,
-      :c3, :c4, :c5, :c6, :c7, :c8, :c9, :d1, :d2, :interview)
+      :c3, :c4, :c5, :c6, :c7, :c8, :c9, :d1, :d2)
     end
     
     def correct_employee
