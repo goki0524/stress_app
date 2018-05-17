@@ -3,7 +3,11 @@ require 'test_helper'
 class ValuesTest < ActionDispatch::IntegrationTest
   
   def setup
-    @employee = employees(:employee_2)
+    @employee = employees(:employee_1)
+    @department = departments(:department_1)
+    @project = projects(:project_1)
+    @value = values(:value_1)
+    @high_value = values(:value_2)
     @value_params = { value: {
       a1: 1, a2: 1, a3: 1, a4: 1, a5: 1, a6: 1, a7: 1, a8: 1, a9: 1, a10: 1,
       a11: 1, a12: 1, a13: 1, a14: 1, a15: 1, a16: 1, a17: 1, b1: 1, b2: 1, 
@@ -41,8 +45,67 @@ class ValuesTest < ActionDispatch::IntegrationTest
       post values_path, params: @value_params
     end
     assert_not flash.empty?
-    assert_redirected_to @employee.values.last
   end
   
+  #ストレス結果をメールで送るを押すとメイラーが作動するか
+  test "value send_email check" do
+    log_in_as_employee(@employee)
+    post send_email_value_path(@value)
+    assert_not flash.empty?
+    assert_redirected_to @value
+    assert_equal 1, ActionMailer::Base.deliveries.size
+  end
+  
+  #高ストレス値の場合で面談希望時にメイラーが作動するか
+  test "value interview check" do
+    log_in_as_employee(@employee)
+    @employee.belong(@department)
+    #高ストレス値でない場合のテスト
+    assert_not @value.high_value?
+    post interview_value_path(@value)
+    assert_equal 0, ActionMailer::Base.deliveries.size
+    assert flash.empty?
+    assert_redirected_to @value
+    #高ストレス値の場合のテスト
+    assert @high_value.high_value?
+    post interview_value_path(@high_value)
+    assert_equal 1, ActionMailer::Base.deliveries.size
+    assert_not flash.empty?
+    assert_redirected_to @high_value
+  end
+  
+  #面談確認ページリンクと面談希望のボタンのテスト
+  test "interview_confirm link and interview_btn check" do
+    log_in_as_employee(@employee)
+    @value.belong(@project)
+    #高ストレス値でない場合
+    #面談確認ページリンク
+    assert_not @value.high_value?
+    get value_path(@value)
+    assert_select 'a[href=?]', interview_confirm_value_path(@value), 
+                    text: "面談確認画面へ", count: 0
+    #面談希望のボタン
+    get interview_confirm_value_path(@value)
+    assert_select 'body div.interview-btn', false
+    assert_select 'body div.un-interview-btn', false
+    #高ストレス値の場合
+    #面談確認ページリンク
+    @high_value.belong(@project)
+    assert @high_value.high_value?
+    get value_path(@high_value)
+    assert_select 'a[href=?]', interview_confirm_value_path(@high_value), 
+                    text: "面談確認画面へ", count: 1
+    #面談希望のボタン
+    get interview_confirm_value_path(@high_value)
+    assert_select 'body div.interview-btn'
+    assert_select 'body div.un-interview-btn'
+  end
+  
+  #TODO: 実施回との関連付けボタンのテスト
+  #実施期間中の実施回で期間中に作成されたストレス値であるか、
+  #またストレス値が他のストレス値と被って実施回に登録されていないか(super_belongの検証)
+  # test "project_values btn check" do
+  # end
+    
   
 end

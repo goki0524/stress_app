@@ -21,7 +21,7 @@
               html: { method: :delete }) do |f|  %>
           <div><%= project.project_name %></div>
           <div>期間：<%= project.start_date %>〜<%= project.end_date %></div>
-          <%= f.submit "提出しない", class: "btn" %>
+          <%= f.submit "提出しない", class: "btn not-submit" %>
         <% end %>
       
       <% elsif project.start_date <= @value.created_at && @value.created_at <= project.end_date && !@value.super_belong?(project) %>
@@ -30,7 +30,7 @@
           <div>期間：<%= project.start_date %>〜<%= project.end_date %></div>
           <div><%= hidden_field_tag :project_id, project.id %></div>
           <div><%= hidden_field_tag :value_id, @value.id %></div>
-          <%= f.submit "提出する", class: "btn btn-primary" %>
+          <%= f.submit "提出する", class: "btn btn-primary submit" %>
         <% end %>
         
       <% elsif @value.super_belong?(project) %>
