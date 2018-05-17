@@ -1,6 +1,8 @@
 class ValuesController < ApplicationController
-  before_action :logged_in_employee, only:[:new, :create, :show]
-  before_action :correct_employee, only:[:show]
+  before_action :logged_in_employee,
+    only:[:new, :create, :show, :send_email, :interview, :interview_confirm]
+  before_action :correct_employee,
+    only:[:show, :send_email, :interview, :interview_confirm]
   
   def new
     @employee = current_employee
@@ -24,12 +26,13 @@ class ValuesController < ApplicationController
   
   def interview
     @value = Value.find(params[:id])
-    if @value.update(interview: true)
+    if @value.high_value? && @value.interview == false
+      @value.update(interview: true)
       flash[:success] = "担当者へ連絡しました。"
       redirect_to @value
       current_employee.send_interview_mail
     else
-      render "interview_confirm"
+      redirect_to @value
     end
   end
   

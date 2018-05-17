@@ -49,6 +49,8 @@ class Employee < ApplicationRecord
     if departments.present?
       companies = departments.map { |d| d.company }
       EmployeeMailer.send_interview_mail(self, companies).deliver_now
+    else
+      false
     end
   end 
   

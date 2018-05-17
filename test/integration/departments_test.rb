@@ -24,12 +24,13 @@ class DepartmentsTest < ActionDispatch::IntegrationTest
       post departments_path, params: { department: { department_name: "department_name_test", employee_number: 5 } }
     end
     assert_not flash.empty?
+    #部署作成後メールを送信しているか
+    assert_equal 1, ActionMailer::Base.deliveries.size
     assert_redirected_to @company
     #showページに移動し登録した情報が表示できているか
     department = @company.departments.find_by(department_name: "department_name_test")
     get department_path(department)
     assert_match "department_name_test", response.body
   end
-  
   
 end

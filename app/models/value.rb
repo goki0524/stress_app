@@ -72,19 +72,15 @@ class Value < ApplicationRecord
     projects.include?(project)
   end
   
-  #実施回と従業員のストレス値(self以外)の関連付があればtrue
+  #従業員の他のストレス値がこの実施回に属していなければfalse,一つでも属していればture
   def super_belong?(project)
-    other_values = []
-    self.employee.values.each do |value|
-      if value != self && !value.blank?
-        other_values << value
-      else
-        return false
-      end
+    other_values = self.employee.values.select{ |value| value != self && !value.blank? }
+    return false if other_values.blank? 
+    #従業員の他のストレス値がこの実施回に属していなければfalse,一つでも属していればture
+    other_values.each do |value|
+      return true if value.belong?(project)
     end
-    other_values.each do |other_value|
-      other_value.belong?(project) ? true : false
-    end
+    return false
   end
   
   #実施回とストレス値の関連付けを解消
