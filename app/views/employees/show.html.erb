@@ -1,20 +1,24 @@
 <% provide(:title, "#{ @employee.full_name }") %>
-
-  <h2>名前：<%= @employee.full_name %></h2>
-  <h2>Email：<%= @employee.email %></h2>
-  <h2>年齢：<%= @employee.age %>歳</h2>
-  <h2>性別：<%= replace_sex(@employee.sex) %></h2>
-  <h2>会社名：<%= @company_name %></h2>
-  <h2>所属部署：
+<div class="row">
+<div class="col-md-6 jumbotron mt-4 white">
+  <h4 class="border-bottom border-gray mb-3 pb-3">名前：<%= @employee.full_name %></h4>
+  <h4 class="border-bottom border-gray mb-3 pb-3">Email：<%= @employee.email %></h4>
+  <h4 class="border-bottom border-gray mb-3 pb-3">年齢：<%= @employee.age %>歳</h4>
+  <h4 class="border-bottom border-gray mb-3 pb-3">性別：<%= replace_sex(@employee.sex) %></h4>
+  <h4 class="border-bottom border-gray mb-3 pb-3">会社名：<%= @company_name %></h4>
+  <h4 class="border-bottom border-gray mb-3 pb-3">所属部署：
   <% @employee.relationships.each do |i| %>
      <li><%= link_to "#{i.department.department_name}", department_path(i.department) %></li>
     <% end %>
-  </h2>
-  
+  </h4>
+  </div>
+<div class="col-md-6 jumbotron mt-4 white">
   <p><%= link_to "ストレスチェック", new_value_path, class: "btn btn-lg btn-primary" %></p>
 
   <% @employee.values.each do |v| %>
-    <li>
+    <li class="lead">
       <%= link_to date_conversion(v.created_at), value_path(v.id) %>
     </li>
   <% end %>
+  </div>
+</div>

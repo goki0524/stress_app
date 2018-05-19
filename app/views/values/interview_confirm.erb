@@ -1,23 +1,27 @@
 <% provide(:title, '面談の確認') %>
 <h1><%= current_employee.full_name %>さん</h1>
-<h1>面談の確認</h1>
-
-<% if @value.high_value? && @value.interview == false && @value.projects.count > 0 %>
+<div class="row">
+  <div class="col-md-12 text-center jumbotron mt-4 white">
+    <h1>面談の確認</h1>
+      <% if @value.high_value? && @value.interview == false && @value.projects.count > 0 %>
+        <p class="lead">高ストレスであるため医師との面談をお勧めします</p>
+        
+          <%= button_to "希望する", { :action => "interview", :id => @value.id }, 
+              :class => "btn btn-primary interview-btn",
+              data: { confirm: "面談希望の有無を会社の担当者へ連絡しますがよろしいですか?" } %>
+    
   
-  <h1>高ストレスであるため医師との面談をお勧めします</h1>
-  <div class="interview-btn">
-    <p><%= button_to "希望する", { :action => "interview", :id => @value.id }, 
-        data: { confirm: "面談希望の有無を会社の担当者へ連絡しますがよろしいですか?" } %></p>
-  </div>
-  <div class="un-interview-btn">
-    <p><%= button_to "希望しない", { :action =>"show", :controller =>"employees", :id => @employee.id }, :method => :get %></p>
-  <div>
-<% elsif @value.interview %>
-  <p>担当者からの連絡をお待ちください</p>
-  
-<% elsif !@value.high_value? %>
-  <p>高ストレスと判定されませんでしたので、面談はできません</p>
-  
-<% else %>
-  <p>実施回に提出がされていません</p>
-<% end %>
+          <%= button_to "希望しない", { :action =>"show", :controller =>"employees", :id => @employee.id }, 
+              :class => "btn btn-outline-primary un-interview-btn", :method => :get %>
+   </div> 
+   
+      <% elsif @value.interview %>
+        <p>担当者からの連絡をお待ちください</p>
+        
+      <% elsif !@value.high_value? %>
+        <p>高ストレスと判定されませんでしたので、面談はできません</p>
+        
+      <% else %>
+      <p>実施回に提出がされていません</p>
+    <% end %>
+</div>

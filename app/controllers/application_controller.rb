@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def logged_in_company
     unless logged_in_company?
       flash[:danger] = "ログインしてください。"
-      redirect_to login_url
+      redirect_to login_company_url
     end
   end
   

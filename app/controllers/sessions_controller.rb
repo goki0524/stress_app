@@ -1,13 +1,13 @@
 class SessionsController < ApplicationController
-  before_action :logged_in_not_loginpage, only:[:new, :new_employee]
+  before_action :logged_in_not_loginpage, only:[:new_company, :new_employee]
   
-  def new
+  def new_company
   end
   
   def new_employee
   end
   
-  def create
+  def create_company
     company = Company.find_by(company_email: params[:session][:company_email].downcase)
     if company && company.authenticate(params[:session][:password])
       if company.activated?
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
       end
     else
       flash.now[:danger] = 'Emailまたはパスワードが間違えています。' 
-      render 'new'
+      render 'new_company'
     end
   end
   
@@ -40,7 +40,7 @@ class SessionsController < ApplicationController
     end
   end
   
-  def destroy
+  def destroy_company
     log_out_company
     redirect_to root_url
   end

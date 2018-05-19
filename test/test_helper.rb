@@ -36,7 +36,7 @@ class ActionDispatch::IntegrationTest
 
   # テストcompanyとしてログインする
   def log_in_as_company(company, password: 'password')
-    post login_path, params: { session: { company_email: company.company_email,
+    post login_company_path, params: { session: { company_email: company.company_email,
                                           password: password } }
   end
   

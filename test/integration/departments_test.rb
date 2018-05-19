@@ -11,7 +11,7 @@ class DepartmentsTest < ActionDispatch::IntegrationTest
     assert_no_difference '@company.departments.count' do
       post departments_path, params: { department: { department_name: "test", employee_number: 5 } }
     end
-    assert_redirected_to login_url
+    assert_redirected_to login_company_path
     #ログインして無効な値の送信
     log_in_as_company(@company)
     assert_no_difference '@company.departments.count' do

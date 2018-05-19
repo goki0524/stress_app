@@ -97,8 +97,8 @@ class ValuesTest < ActionDispatch::IntegrationTest
                     text: "面談確認画面へ", count: 1
     #面談希望のボタン
     get interview_confirm_value_path(@high_value)
-    assert_select 'body div.interview-btn'
-    assert_select 'body div.un-interview-btn'
+    assert_select 'body .interview-btn'
+    assert_select 'body .un-interview-btn'
   end
   
   #TODO: 実施回との関連付けボタンのテスト

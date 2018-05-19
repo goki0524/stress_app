@@ -1,23 +1,56 @@
 <% provide(:title, "#{@company.company_name}") %>
-
-  <h1>会社名：<%= @company.company_name %></h1>
-  <h1>Email：<%= @company.company_email %></h1>
-  
-  <%= link_to "部署を作成する", new_department_path, class: "btn btn-lg btn-primary" %>
-  <%= link_to "実施回を作成する", new_project_path, class: "btn btn-lg btn-primary" %>
-    
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <p>＜部署＞</p>
-         <% @company.departments.each do |d| %>
-          <p>部署名:<%= link_to "#{d.department_name}", department_path(d.id) %></p>
-    
-           <p>部署人数：<%= d.employee_number %>人</p><br>
-         <% end %>
-         
-      <p>＜実施回＞</p>
-       <% @company.projects.each do |i| %>
-        <p>実施回名:<%= link_to "#{i.project_name}", project_path(i.id) %></p>
-       <% end %>
+<div class="row">
+  <div class="col-md-12 col-md-offset-3">
+    <div class="jumbotron mt-4 white">
+      <h3>会社名：<%= @company.company_name %></h3>
+      <h3>Email：<%= @company.company_email %></h3>
     </div>
+    
+    <div class="jumbotron mt-4 white">
+      <h3>部署</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">部署名</th>
+            <th scope="col">従業員数</th>
+          </tr>
+        </thead>  
+        <tbody>
+        <% @company.departments.each do |d| %>
+            <tr>
+              <th scope="row"><%= d.id %></th>
+              <td><%= link_to "#{d.department_name}", department_path(d.id) %></td>
+              <td><%= d.employee_number %>名</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <p><%= link_to "部署を作成する", new_department_path, class: "btn btn-lg btn-primary" %></p>
+    </div>
+    
+    <div class="jumbotron mt-4 white">
+    <h3>実施回</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">実施回名</th>
+          <th scope="col">期間</th>
+        </tr>
+      </thead>  
+      <tbody>
+      <% @company.projects.each do |i| %>
+        <tr>
+          <th scope="row"><%= i.id %></th>
+          <td><%= link_to "#{i.project_name}", project_path(i.id) %></td>
+          <td><%= i.start_date %>〜<%= i.end_date %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <p><%= link_to "実施回を作成する", new_project_path, class: "btn btn-lg btn-primary" %></p>
   </div>
+  </div>
+</div>
+

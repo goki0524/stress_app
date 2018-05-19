@@ -1,10 +1,11 @@
-<div class="center jumbotron">
-  <h1>Stress App</h1>
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+   <div class="col-md-10 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 font-weight-normal">StressApp</h1>
+        <p class="lead font-weight-normal">Stress Appは簡単にストレスチェックができるWebサイトです</p>
+       
+   </div>
+   <%= link_to "会社アカウント登録", new_company_path, class: "btn btn-lg btn-outline-secondary" %>
+   <%= link_to "従業員アカウント登録", new_employee_path, class: "btn btn-lg btn-outline-secondary" %>
 
-  <h2>
-   
-  </h2>
 
-  <%= link_to "会社アカウント登録", new_company_path, class: "btn btn-lg btn-primary" %>
-  <%= link_to "従業員アカウント登録", new_employee_path, class: "btn btn-lg btn-primary" %>
 </div>

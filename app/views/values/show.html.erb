@@ -1,84 +1,83 @@
 <% provide(:title, 'ストレスプロフィール') %>
-<h1>ストレスプロフィール</h1>
-<div class = "profile">
-    <%= date_conversion(@value.created_at) %>
-    <h1><%= @employee.full_name %>さんのストレスプロフィール</h1>
-    <% @departments.each do |d| %>
-        <p>会社:<%= d.company.company_name %></p>
-        <p>部署:<%= d.department_name %></p>
-        <p>実施回:<% d.company.projects.each do |i| %></p>
-                    
-                    <%= i.start_date %>〜<%= i.end_date %>
-                    <%= i.project_name %>
-
-                  <% end %>
-    <% end %>
-    
-    <h1>期間中の実施回</h1>
+<h3 class="text-center">適切な実施回を選択して提出してください</h3>
+<div class="row">
+  <div class="col-md-6 jumbotron mt-4 white">
+      <% @departments.each do |d| %>
+          <h4 class="border-bottom border-gray mb-3 pb-3"><%= d.company.company_name %>の実施回:</h4>
+          <% d.company.projects.each do |i| %>
+            <ul>
+              <li class="border-bottom border-gray mb-2 pb-2 list-unstyled">
+                <h6><%= "#{i.project_name}" %></h6>
+                <h6>期間：<%="#{i.start_date}〜#{i.end_date}" %></h6>
+              </li>
+             </ul>
+          <% end %>
+          <h4 class="border-bottom border-gray mb-3 pb-3">部署:<%= d.department_name %></h4>
+      <% end %>
+  </div>
+<div class="col-md-6 jumbotron mt-4 white">
+    <h4 class="border-bottom border-gray mb-3 pb-3">期間中の実施回</h4>
     <% @correct_projects.each do |project| %>
       <% if @value.belong?(project) %>
         <%= form_for(@value.project_values.find_by(project_id: project.id),
               html: { method: :delete }) do |f|  %>
-          <div><%= project.project_name %></div>
-          <div>期間：<%= project.start_date %>〜<%= project.end_date %></div>
-          <%= f.submit "提出しない", class: "btn" %>
+           <li class="border-bottom border-gray mb-2 pb-4 pt-3 list-unstyled">
+          <h6><%= project.project_name %></h6>
+          <h6>期間：<%= project.start_date %>〜<%= project.end_date %></h6>
+          <%= f.submit "提出しない", class: "btn btn-outline-primary" %>
+           </li>
         <% end %>
       
       <% elsif project.start_date <= @value.created_at && @value.created_at <= project.end_date && !@value.super_belong?(project) %>
         <%= form_for(@value.project_values.build) do |f| %>
-          <div><%= project.project_name %></div>
-          <div>期間：<%= project.start_date %>〜<%= project.end_date %></div>
-          <div><%= hidden_field_tag :project_id, project.id %></div>
-          <div><%= hidden_field_tag :value_id, @value.id %></div>
+        <li class="border-bottom border-gray mb-2 pb-4  pt-3 list-unstyled">
+          <h6><%= project.project_name %></h6>
+          <h6>期間：<%= project.start_date %>〜<%= project.end_date %></h6>
+        
+          <%= hidden_field_tag :project_id, project.id %>
+          <%= hidden_field_tag :value_id, @value.id %>
           <%= f.submit "提出する", class: "btn btn-primary" %>
+          </li>
         <% end %>
         
       <% elsif @value.super_belong?(project) %>
-        <p><%= project.project_name %>は他のストレス値が提出されています</p>  
-        
+        <h6 class="border-bottom border-gray mb-2 pb-5 pt-5 text-danger"><%= project.project_name %>は他のストレス値が提出されています</h6>  
+  
        <% else %>
-       <p><%= project.project_name %>は期間外なので提出できません</p>
+       <h6 class="border-bottom border-gray mb-2 pb-5 pt-5 text-danger"><%= project.project_name %>は期間外なので提出できません</h6>
       <% end %>
         
     <% end %>
-    
-    
-    
+  </div>  
 </div>
-<br/>
 
-<div class = "description">
-    ご回答いただいたストレス調査票の結果から、“あなたのストレスプロフィール”を作成しました。このプロフィールから、
-    あなたのストレスの状態をおおよそ把握していただくことが出来ると思います。結果をごらんいただき、ご自分の心の健康管理に
-    お役立てください。詳しいストレス度や、それに伴うこころの問題については、この結果のみで判断することはできません。
-    ご心配な方は専門家にご相談ください。
-</div>
-<div class = "higt_stress">
-    <h2><%= high_stress(count_a: @count_a, count_b: @count_b, count_c: @count_c) %></h2>
-</div>
-<br/>
-<div class = "assessment">
-    <h2>＜評価＞</h2>
-    <%= stress_check(count_a: @count_a, count_b: @count_b, count_c: @count_c) %>
-</div>
-<br/>
+<h1 class="text-center"><%= @employee.full_name %>さんのストレスプロフィール</h1>
+  <%= date_conversion(@value.created_at) %>
 
-<h2>ストレスグラフ</h2>
-<%= high_chart("my_chart_1", @chart_a) %>
-<br/>
+<div class="higt_stress jumbotron mt-4 white">
+  <h3 class="text-center"><%= high_stress(count_a: @count_a, count_b: @count_b, count_c: @count_c) %></h3> </br>
+  <p class="lead">
+      ご回答いただいたストレス調査票の結果から、“あなたのストレスプロフィール”を作成しました。このプロフィールから、
+      あなたのストレスの状態をおおよそ把握していただくことが出来ると思います。結果をごらんいただき、ご自分の心の健康管理に
+      お役立てください。詳しいストレス度や、それに伴うこころの問題については、この結果のみで判断することはできません。
+      ご心配な方は専門家にご相談ください。
+  </p>
+  <h2>【 評価 】</h2>
+  <p class="lead">
+     <%= stress_check(count_a: @count_a, count_b: @count_b, count_c: @count_c) %>
+  </p>
 
-
-<%= high_chart("my_chart_2", @chart_b) %>
-<br/>
-
-<%= high_chart("my_chart_3", @chart_c) %>
-<h5>(グラフは点数が低いほど高ストレスとなります)</h5>
-<br/>
-
-
-
-<div class = "comment">
-    <h2>＜コメント＞</h2>
+  <%= high_chart("my_chart_1", @chart_a) %>
+  <br/>
+  
+  <%= high_chart("my_chart_2", @chart_b) %>
+  <br/>
+  
+  <%= high_chart("my_chart_3", @chart_c) %>
+  <h6>(グラフは点数が低いほど高ストレスとなります)</h6><br/>
+  
+  <h2>【 コメント 】</h2>
+  <p class="lead">
     ご自分にとってのストレスの原因となるものとその程度を把握し、それに可能な対処をしていくことで、
     心や体に大きなストレスがかかるのを未然に防ぐことが可能です。仕事の量が多い、仕事の質が厳しい
     と考えている人は、もう一度自分の仕事量を見直し、上司、同僚と仕事内容について相談することを
@@ -88,15 +87,25 @@
     予定が立てられない状況などです。仕事のやり方をうまくして負担量を軽減することはできないか、仕事
     の進め方を自分で選択できる部分がないかなど考えてみて下さい。それが無理な場合は、仕事からストレス
     を多く受けていることを自覚して、勤務時間外や休日はなるべく仕事を持ち帰らず、リフレッシュに努めましょう。
+  </p>
+  <br/>
+  
 </div>
-<br/>
 
+<div class="row">
+  <div class="col-md-6">
+    <input type="button" value="このページを印刷" class= "btn btn-outline-primary" onclick="window.print();">
+  </div>
+  <div class="col-md-6">
+    <%= button_to "結果をメールで送る", { :action => "send_email", :id => @value.id },
+          data: { confirm: "#{@employee.email}宛てにメール送ります。よろしいですか？" },
+          :class => "btn btn-outline-primary" %>
+  </div>
+</div>
 
-<input type="button" value="このページを印刷" onclick="window.print();">
-<p><%= button_to "結果をメールで送る", { :action => "send_email", :id => @value.id },
-      data: { confirm: "#{@employee.email}宛てにメール送ります。よろしいですか？" } %></p>
-
-  <% if @value.high_value? %>
-    <p>あなたは高ストレスと判定されました、下記のページから産業医との面談希望の有無をお知らせください。</p>
-    <%= link_to "面談確認画面へ", interview_confirm_value_path(@value)  %> </br>
-  <% end %>
+<% if @value.high_value? %>
+  <div class="col-md-12 jumbotron mt-4 red">
+    <h4 class="text-white text-center">あなたは高ストレスと判定されました、下記のページから産業医との面談希望の有無をお知らせください。</p>
+    <%= link_to "面談確認画面へ", interview_confirm_value_path(@value), class: 'btn btn-light' %> </br>
+  </div>
+<% end %>
