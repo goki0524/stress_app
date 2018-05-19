@@ -1,0 +1,94 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ 
+ */
+
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap"
+
+html
+  font-size: 14px
+
+@media (min-width: 768px)
+  html
+    font-size: 16px
+  
+@mixin box_sizing 
+  -moz-box-sizing:    border-box
+  -webkit-box-sizing: border-box
+  box-sizing:         border-box
+
+
+.container
+  max-width: 960px
+
+
+.pricing-header
+  max-width: 700px
+
+
+.card-deck .card
+  min-width: 220px
+
+.btn
+  margin: 5px
+  
+.text-muted
+  margin-left: 10px
+  
+#logo 
+  float: left
+  margin-right: 10px
+  font-size: 1.7em
+  color: black
+  text-transform: uppercase
+  letter-spacing: -1px
+  padding-top: 9px
+  font-weight: bold
+  &:hover 
+    color: black
+    text-decoration: none
+
+#error_explanation 
+  color: red
+  ul 
+    color: red
+    margin: 0 0 30px 0
+
+.field_with_errors 
+  .form-control 
+    color: red
+
+/* forms */
+
+input, textarea, select, .uneditable-input 
+  border: 1px solid #bbb
+  width: 100%
+  margin-bottom: 15px
+  @include box_sizing
+  padding: 0.5em 0.5em
+  
+input 
+  height: auto !important
+
+.green
+  background-color: #EEFDDC
+  border: 1px solid #bee5eb
+  
+.white
+  background-color: #f8f9fa
+  border: 1px solid #dfe6e9
+  
+.red
+  background-color: #d9534f
+  border: 1px solid red

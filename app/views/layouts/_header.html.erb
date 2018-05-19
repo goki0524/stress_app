@@ -1,57 +1,32 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+  
+  
     <% if logged_in_company? %>
-
-    <%= link_to "stress app", current_company, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "ホーム", current_company %></li>
-        <li><%= link_to "マニュアル", help_path %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              アカウント <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "マイページ", current_company %></li>
-              <li><%= link_to "設定", '#' %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "ログアウト", logout_path, method: :delete %>
-              </li>
-            </ul>
-          </li>
-          
+    <%= link_to "stress app", current_company, class: "my-0 mr-md-auto font-weight-normal", id: "logo" %>
+      <nav class="my-2 my-md-0 mr-md-3">
+          <%= link_to "ホーム", current_company, class: "p-2 text-dark"%>
+          <%= link_to "マニュアル", help_path, class: "p-2 text-dark" %>
+          <%= link_to "マイページ", current_company, class: "p-2 text-dark" %>
+          <%= link_to "ログアウト", logout_company_path, class: "btn btn-outline-primary", method: :delete %>
+      </nav>
+  
     <% elsif logged_in_employee? %>
-      <%= link_to "stress app", current_employee, id: "logo" %>
-      <nav>
-      <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "ホーム", current_employee %></li>
-          <li><%= link_to "マニュアル", help_path %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              アカウント <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "マイページ", current_employee %></li>
-              <li><%= link_to "設定", '#' %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "ログアウト", logout_employee_path, method: :delete %>
-              </li>
-            </ul>
-          </li>
-          
-        <% else %>
-        <%= link_to "stress app", root_path, id: "logo" %>
-        <nav>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "ホーム", root_path %></li>
-          <li><%= link_to "マニュアル", help_path %></li>
-          <li><%= link_to "会社ログイン", login_path %></li>
-          <li><%= link_to "従業員ログイン", login_employee_path%></li>
-        <% end %>
-
-      </ul>
-    </nav>
-  </div>
-</header>
+    <%= link_to "stress app", current_employee, class: "my-0 mr-md-auto font-weight-normal", id: "logo" %>
+      <nav class="my-2 my-md-0 mr-md-3">
+          <%= link_to "ホーム", current_employee, class: "p-2 text-dark"%>
+          <%= link_to "マニュアル", help_path, class: "p-2 text-dark" %>
+          <%= link_to "マイページ", current_employee , class: "p-2 text-dark" %>
+          <%= link_to "ログアウト", logout_employee_path, class: "btn btn-outline-primary", method: :delete %>
+      </nav>
+      
+    <% else %>
+    <%= link_to "stress app", root_path, class: "my-0 mr-md-auto font-weight-normal", id: "logo" %>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <%= link_to "ホーム", root_path, class: "p-2 text-dark"%>
+        <%= link_to "マニュアル", help_path, class: "p-2 text-dark" %>
+      </nav>
+      <%= link_to "会社ログイン", login_company_path, class: "btn btn-outline-primary" %>
+      <%= link_to "従業員ログイン", login_employee_path, class: "btn btn-outline-primary" %>
+    <% end %>
+</div>
+    

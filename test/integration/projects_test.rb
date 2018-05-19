@@ -13,7 +13,7 @@ class ProjectsTest < ActionDispatch::IntegrationTest
     post projects_path, params: { project: { project_name: "project_name_test", 
           employee_number: 5, start_date: "2018-04-24", end_date: "2018-05-24" } }
     end
-    assert_redirected_to login_url
+    assert_redirected_to login_company_path
     #ログインした状態で無効な値を送る
     log_in_as_company(@company)
     assert_no_difference '@company.projects.count' do

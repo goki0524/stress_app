@@ -16,7 +16,7 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
   test "should redirect show when not logged in" do
     get company_path(@company)
     assert_not flash.empty?
-    assert_redirected_to login_url
+    assert_redirected_to login_company_path
   end
   
   

@@ -1,29 +1,32 @@
 <% provide(:title, "#{@project.project_name}") %>
-
-<p>実施回名:<%= @project.project_name %></p>
-<p>期間:<%= @project.start_date %>〜<%= @project.end_date %></p>
-<p>受検対象者数:<%= @project.employee_number %>人</p>
-<p>受検終了者数:<%= @values.count %>人</p>
-<p>未受検者数:<%= @project.employee_number - @values.count %>人</p>
-<p>高ストレス者：<%= @high_stress_count %>人</p>
-<p>面談希望者：<%= @interview_count  %>人</p>
-  <ul>
-    <% @values.each do |value| %>
-      <% if value.interview %>
-        <li><%= value.employee.full_name %></li>
-        <%= value.employee.email %> 
+<div class="row">
+  <div class="col-md-12 col-md-offset-3 jumbotron mt-4 white">
+    <p class="border-bottom border-gray mb-2 pb-2">実施回名:<%= @project.project_name %></p>
+    <p class="border-bottom border-gray mb-3 pb-2">期間:<%= @project.start_date %>〜<%= @project.end_date %></p>
+    <p class="border-bottom border-gray mb-3 pb-2">受検対象者数:<%= @project.employee_number %>人</p>
+    <p class="border-bottom border-gray mb-3 pb-2">受検終了者数:<%= @values.count %>人</p>
+    <p class="border-bottom border-gray mb-3 pb-2">未受検者数:<%= @project.employee_number - @values.count %>人</p>
+    <p class="border-bottom border-gray mb-3 pb-2">高ストレス者：<%= @high_stress_count %>人</p>
+    <p class="border-bottom border-gray mb-3 pb-2">面談希望者：<%= @interview_count  %>人</p>
+    <ul>
+      <% @values.each do |value| %>
+        <% if value.interview %>
+          <li><%= value.employee.full_name %></li>
+          <%= "< #{value.employee.email} >" %>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
-<p>受検終了者名</p>
-<ul>
-<% @values.each do |value| %>
-  <li>従業員名：<%= value.employee.full_name %></br>
-  ストレスID：<%= value.id %></br>
-  高ストレス：<% if value.high_value? %>
-                <%= "有" %>  
-              <% else %>
-                <%= "無" %>  
-              <% end %>
-<% end %>
-</ul>
+    </ul>
+    <p class="border-bottom border-gray mb-3 pb-2">受検終了者名</p>
+    <ul>
+      <% @values.each do |value| %>
+        <li>従業員名：<%= value.employee.full_name %></br>
+        ストレスID：<%= value.id %></br>
+        高ストレス：<% if value.high_value? %>
+                      <%= "有" %>  
+                    <% else %>
+                      <%= "無" %>  
+                    <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
