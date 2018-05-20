@@ -1,0 +1,35 @@
+ja:
+  activerecord:
+    models:
+      company: 会社
+      department: 部署
+      project: 実施回
+      employee: 従業員
+      
+    attributes:
+      company:
+        company_name: 会社名
+        company_email: Email
+        password: パスワード
+        password_confirmation: パスワード確認
+        all_employee_number: 従業員数
+        
+      department:
+        department_name: 部署名
+        employee_number: 従業員数
+        
+      project:
+        project_name: 実施回名
+        employee_number: 受検対象者数
+        start_date: 開始日
+        end_date: 終了日
+        
+      employee:
+        first_name: 姓
+        last_name: 名
+        email: Email
+        age: 年齢
+        sex: 性別
+        password: パスワード
+        password_confirmation: パスワード確認
+        

@@ -5,7 +5,6 @@ gem 'bcrypt',         '3.1.11'
 gem 'bootstrap', '~> 4.1', '>= 4.1.1'
 gem 'puma',         '3.9.1'
 gem 'sass-rails',   '5.0.6'
-gem 'bootstrap-sass', '3.3.7'
 gem 'uglifier',     '3.2.0'
 gem 'coffee-rails', '4.2.2'
 gem 'jquery-rails', '4.3.1'
@@ -16,6 +15,7 @@ gem 'dragonfly', '~> 1.1', '>= 1.1.4'
 gem 'rqrcode_png', '~> 0.1.5'
 gem 'rqrcode'
 gem 'chunky_png'
+gem 'rails-i18n'
 
 
 group :development, :test do
