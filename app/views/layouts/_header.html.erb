@@ -6,8 +6,8 @@
         <%= link_to "ホーム", current_company, class: "p-2 text-dark"%>
         <%= link_to "マニュアル", help_path, class: "p-2 text-dark" %>
         <%= link_to "マイページ", current_company, class: "p-2 text-dark" %>
-        <%= link_to "ログアウト", logout_company_path, class: "btn btn-outline-primary", method: :delete %>
     </nav>
+   <%= link_to "ログアウト", logout_company_path, class: "btn btn-outline-primary", method: :delete %>
 
   <% elsif logged_in_employee? %>
   <%= link_to image_tag("/icon32.svg",:size => "32x32", :alt => "アイコン"), current_employee %>
@@ -16,8 +16,8 @@
         <%= link_to "ホーム", current_employee, class: "p-2 text-dark"%>
         <%= link_to "マニュアル", help_path, class: "p-2 text-dark" %>
         <%= link_to "マイページ", current_employee , class: "p-2 text-dark" %>
-        <%= link_to "ログアウト", logout_employee_path, class: "btn btn-outline-primary", method: :delete %>
     </nav>
+  <%= link_to "ログアウト", logout_employee_path, class: "btn btn-outline-primary", method: :delete %>
     
   <% else %>
   <%= link_to image_tag("/icon32.svg",:size => "32x32", :alt => "アイコン"), root_path %>
