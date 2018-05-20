@@ -1,3 +1,89 @@
 <% provide(:title, "マニュアル") %>
-<h1>マニュアル</h1>
 
+<h2 class="text-center mt-5 mb-5">StressApp操作マニュアル</h2>
+<div class=class="card-deck mb-3 text-center">
+  <div class="card mb-5 box-shadow">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal text-center">従業員</h4>
+    </div>
+    <div class="card-body">
+     <h5 class="pb-2">1. 従業員アカウント登録</h5>
+      <p class="border-bottom border-gray mb-2 pb-3 text-muted">
+        従業員登録フォームに必要な情報を入力し、従業員アカウントを作成してください。
+      </p>
+      <h5 class="pb-2 pt-2">2. ログイン方法</h5>
+      <p class="border-bottom border-gray mb-2 pb-3 text-muted">
+        登録時に入力したEmailを確認しアカウントを有効にしてください。
+        以降ログイン画面よりEmailとパスワードを入力しログインできます。
+      </p>
+      <h5 class="pb-2 pt-2">3. 所属する部署との関連付け</h5>
+      <p class="border-bottom border-gray mb-2 pb-3 text-muted">
+        ログインした状態で会社から配布されたQRコードを読み取り、部署に所属してください。</br>
+        <span class="small">※QRコードが読み取れない場合は、部署URLをURL欄より入力してアクセスしてください。</span>
+      </p>
+      <h5 class="pb-2 pt-2">4. ストレスチェック</h5>
+      <p class="border-bottom border-gray mb-2 pb-3 text-muted">
+        マイページより適切な会社と部署に所属しているか確認し、ストレスチェックを実施してください。</br>
+        ストレスチェックが終了したら、適切な会社の実施回を選択し提出してください。</br>
+        提出をすることで会社と関連付けができます。</br>
+        <span class="small">※ストレスチェックの結果は会社側には把握はされません。高ストレスと判定され、面談希望時のみ情報が送られます。<span>
+      </p>
+      <h5 class="pb-2 pt-2">5. ストレス結果の確認</h5>
+        <p class="border-bottom border-gray mb-2 pb-3 text-muted">
+          ストレスチェックが終了すると結果が表示されます。ストレスチェックの結果は、印刷またはEmailにて送信できます。</br>
+          <span class="text-danger">高ストレスと判定された場合は、医師との面談希望の有無を選択してください。</span></br>
+          面談希望を選択すると、後日会社担当者より面談の詳細についての連絡があります。
+        </p>
+      </div>
+  </div>
+  
+  <div class="card mb-5 box-shadow">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal text-center">会社</h4>
+    </div>
+    <div class="card-body">
+     
+     <h5 class="pb-2">1. 会社アカウント登録</h5>
+      <p class="border-bottom border-gray mb-2 pb-3 text-muted">
+        会社登録フォームに必要な情報を入力し、会社アカウントを作成してください。
+      </p>
+      <h5 class="pb-2 pt-2">2. ログイン方法</h5>
+      <p class="border-bottom border-gray mb-2 pb-3 text-muted">
+        アカウント作成時に入力した、Emailとパスワードを入力しログインしてください。
+      </p>
+      <h5 class="pb-2 pt-2">3. 部署作成</h5>
+      <p class="border-bottom border-gray mb-2 pb-3 text-muted">
+        部署登録画面より、部署名・従業員数を入力し会社の全部署を作成してください。
+      </p>
+      <h5 class="pb-2 pt-2">4. 実施回作成</h5>
+      <p class="border-bottom border-gray mb-2 pb-3 text-muted">
+        実施回作成画面より、実施回名・開始日・終了日・受検対象者数（ストレスチェックを受検する総人数）を入力し、実施回を作成してください。</br>
+        実施回名は年度別にするとわかりやすいです。（例：20XX年度）
+      </p>
+      <h5 class="pb-2 pt-2">5. 部署QRコードを従業員へ配布する</h5>
+      <p class="border-bottom border-gray mb-2 pb-3 text-muted">
+        部署を作成すると、部署ごとのQRコードがEmail（会社アカウント登録時のEmailアドレス宛）で送られます。</br>
+        QRコードと実施回名を従業員へ配布し（Emailまたは印刷し）、実施回期間内にストレスチェックを行うよう連絡してください。
+      </p>
+       <h5 class="pb-2 pt-2">6. 面談希望の通知</h5>
+      <p class="border-bottom border-gray mb-2 pb-3 text-muted">
+        従業員が高ストレスと判定され医師との面談の希望があった場合、会社アカウントEmailへ面談希望の通知が送られます。</br>
+        面談希望の方と連絡を取っていただき、面談の日程を決めてください。</br>
+        <span class="small">※面談希望の通知から面談希望者の連絡先がわかります。<span>
+      </p>
+      <h5 class="pb-2 pt-2">7. 料金お支払い</h5>
+      <p class="border-bottom border-gray mb-2 pb-3 text-muted">
+        実施回で登録した、受検対象者数がストレスチェック終了者数と満たった場合、会社アカウントEmailにご利用明細が送信されますので、
+        記載された口座番号へ入金してください。
+      </p>
+     
+     
+     
+    
+    </div>
+  </div>
+  
+  
+  
+  
+ </div>

@@ -5,8 +5,9 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   def setup
     @base_title = "Stress App"
     @help_title = "マニュアル"
-    @about_title = "ストレスチェックとは"
-    @contact_title = "お問い合わせ"
+    @about_title = "ストレスチェック制度について"
+    @service_title = "StressAppについて"
+    @privacy_title = "プライバシーポリシー"
   end
   
   test "should get home" do
@@ -27,10 +28,16 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_select "title", "#{@about_title} | #{@base_title}"
   end
   
-  test "should get contact" do
-    get contact_path
+  test "should get service" do
+    get service_path
     assert_response :success
-    assert_select "title", "#{@contact_title} | #{@base_title}"
+    assert_select "title", "#{@service_title} | #{@base_title}"
+  end
+  
+  test "should get privacy" do
+    get privacy_path
+    assert_response :success
+    assert_select "title", "#{@privacy_title} | #{@base_title}"
   end
   
 end

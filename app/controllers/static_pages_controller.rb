@@ -11,7 +11,10 @@ class StaticPagesController < ApplicationController
   def about
   end
   
-  def contact
+  def service
+  end
+  
+  def privacy
   end
   
   
