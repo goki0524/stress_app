@@ -1,12 +1,10 @@
 <% if @department.errors.any? %>
-  <div id="error_explanation">
-    <div class="alert alert-danger">
-      The form contains <%= pluralize(@department.errors.count, "error") %>.
-    </div>
+  <div class="alert alert-danger">
+    <strong>入力内容にエラーがあります</strong>
     <ul>
-    <% @department.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+      <% @department.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>

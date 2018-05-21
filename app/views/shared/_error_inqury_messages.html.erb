@@ -1,8 +1,8 @@
-<% if @value.errors.any? %>
-  <div class="alert alert-danger">
+<% if @inquiry.errors.any? %>
+  <div class="alert alert-danger" role="alert">
     <strong>入力内容にエラーがあります</strong>
     <ul>
-      <% @value.errors.full_messages.each do |msg| %>
+      <% @inquiry.errors.each do |attr, msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
