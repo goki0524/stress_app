@@ -1,4 +1,5 @@
 <% if @project.errors.any? %>
+<div id="error_explanation">
   <div class="alert alert-danger">
     <strong>入力内容にエラーがあります</strong>
     <ul>
@@ -7,4 +8,5 @@
       <% end %>
     </ul>
   </div>
+</div>
 <% end %>
