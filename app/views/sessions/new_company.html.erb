@@ -1,8 +1,7 @@
 <% provide(:title, "会社ログイン") %>
-<h1>会社ログイン</h1>
-
 <div class="row">
-  <div class="col-md-8 col-md-offset-3">
+  <div class="col-lg-8 offset-lg-2 pb-5">
+    <h2 class="text-center pt-3 pb-3">会社ログイン</h2>
     <%= form_for(:session, url: login_company_path) do |f| %>
 
       <%= f.label :company_email, "Email" %>
@@ -11,9 +10,9 @@
       <%= f.label :password, "パスワード" %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.submit "ログインする", class: "btn btn-primary" %>
+      <%= f.submit "ログインする", class: "btn btn-primary mt-3" %>
     <% end %>
 
-    <p><%= link_to "会社アカウントを作成する", new_company_path %></p>
+    <p class="pt-3"><%= link_to "会社アカウントを作成する", new_company_path %></p>
   </div>
 </div>

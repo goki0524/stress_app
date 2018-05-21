@@ -1,8 +1,8 @@
-<% if @value.errors.any? %>
+<% if @company.errors.any? %>
   <div class="alert alert-danger">
     <strong>入力内容にエラーがあります</strong>
     <ul>
-      <% @value.errors.full_messages.each do |msg| %>
+      <% @company.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
