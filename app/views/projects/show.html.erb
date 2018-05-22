@@ -1,6 +1,6 @@
 <% provide(:title, "#{@project.project_name}") %>
 <div class="row">
-  <div class="col-md-12 col-md-offset-3 jumbotron mt-4 white">
+  <div class="col-sm jumbotron mt-4 white">
     <p class="border-bottom border-gray mb-2 pb-2">実施回名:<%= @project.project_name %></p>
     <p class="border-bottom border-gray mb-3 pb-2">期間:<%= @project.start_date %>〜<%= @project.end_date %></p>
     <p class="border-bottom border-gray mb-3 pb-2">受検対象者数:<%= @project.employee_number %>人</p>
@@ -29,4 +29,17 @@
       <% end %>
     </ul>
   </div>
+  <div class="col-sm">
+    <h4 class="text-center pt-4 pb-3">グラフ</h4>
+    <%= high_chart("chart_1", @chart_finish_stress) %>
+    <p class="text-center small pb-5"><受検終了者数 / 受検対象者数></p>
+    
+    <% unless @high_stress_count == 0 %>
+    <%= high_chart("chart_2", @chart_high_stress) %>
+    <p class="text-center small pb-5"><高ストレス者数 / 受検終了者数></p>
+    <% end %>
+    
+    
+  </div>
 </div>
+

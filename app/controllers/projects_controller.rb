@@ -28,6 +28,55 @@ class ProjectsController < ApplicationController
       @high_stress_count += 1 if value.high_value? 
       @interview_count += 1 if value.interview
     end
+    
+    chart_finish_value = (@values.count.to_f / @project.employee_number.to_f) * 100.0
+    chart_unfinish_value = 100.0 - chart_finish_value
+    @chart_finish_stress = LazyHighCharts::HighChart.new("graph") do |c|
+      c.chart(type: "pie")
+      c.title(text: "受検終了者割合(%)")
+      c.plotOptions(pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+            enabled: true,
+            format: '<b>{point.name}</b>: {point.percentage:.1f} %'}
+            })
+        
+      c.series(name: "Brands",
+               colorByPoint: true,
+               data: [{
+                    name: "受検終了者",
+                    y: chart_finish_value
+               }, {
+                   name: "未受検者" ,
+                    y: chart_unfinish_value
+               }])
+    end
+    
+    #高ストレス者の割合
+    chart_high_value = (@high_stress_count.to_f / @values.count.to_f) * 100.0
+    #非高ストレスの割合
+    chart_low_value = 100.0 - chart_high_value
+    @chart_high_stress = LazyHighCharts::HighChart.new("graph") do |c|
+      c.chart(type: "pie")
+      c.title(text: "高ストレス者割合(%)")
+      c.plotOptions(pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+            enabled: true,
+            format: '<b>{point.name}</b>: {point.percentage:.1f} %'}
+            })
+      c.series(name: "Brands",
+               colorByPoint: true,
+               data: [{
+                    name: "高ストレス者",
+                    y: chart_high_value
+               }, {
+                   name: "非高ストレス" ,
+                    y: chart_low_value
+               }])
+    end
   end
   
   private
