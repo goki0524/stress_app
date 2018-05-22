@@ -69,6 +69,10 @@
      <%= stress_check(count_a: @count_a, count_b: @count_b, count_c: @count_c) %>
   </p>
 
+  <div class="col-12 d-md-none">
+    <p class="text-center text-primary">スマートフォンの場合は画面を横にするとグラフが見やすいです</p>
+  </div>
+  
   <%= high_chart("my_chart_1", @chart_a) %>
   <br/>
   
@@ -76,8 +80,10 @@
   <br/>
   
   <%= high_chart("my_chart_3", @chart_c) %>
-  <h6>(グラフは点数が低いほど高ストレスとなります)</h6><br/>
-  
+  <h6>(グラフは点数が低いほど高ストレスとなります)</h6>
+  <br/>
+
+
   <h2>【 コメント 】</h2>
   <p class="lead">
     ご自分にとってのストレスの原因となるものとその程度を把握し、それに可能な対処をしていくことで、

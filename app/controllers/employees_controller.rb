@@ -19,8 +19,6 @@ class EmployeesController < ApplicationController
   
   def show
     @employee = Employee.find(params[:id])
-    @company_name = @employee.relationships.map{ |i|
-      i.department.company.company_name }
   end
 
 

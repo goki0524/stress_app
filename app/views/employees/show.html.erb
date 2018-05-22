@@ -5,11 +5,15 @@
   <h4 class="border-bottom border-gray mb-3 pb-3">Email：<%= @employee.email %></h4>
   <h4 class="border-bottom border-gray mb-3 pb-3">年齢：<%= @employee.age %>歳</h4>
   <h4 class="border-bottom border-gray mb-3 pb-3">性別：<%= replace_sex(@employee.sex) %></h4>
-  <h4 class="border-bottom border-gray mb-3 pb-3">会社名：<%= @company_name %></h4>
+  <h4 class="border-bottom border-gray mb-3 pb-3">会社名：
+  <% @employee.relationships.each do |i| %>
+    <li><%= i.department.company.company_name %></li>
+  <% end %>
+  </h4>
   <h4 class="border-bottom border-gray mb-3 pb-3">所属部署：
   <% @employee.relationships.each do |i| %>
-     <li><%= link_to "#{i.department.department_name}", department_path(i.department) %></li>
-    <% end %>
+    <li><%= link_to "#{i.department.company.company_name + i.department.department_name}", department_path(i.department) %></li>
+  <% end %>
   </h4>
   </div>
 <div class="col-md-6 jumbotron mt-4 white">
