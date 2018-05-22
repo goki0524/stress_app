@@ -192,14 +192,14 @@ class ValuesController < ApplicationController
     
     @chart_a = LazyHighCharts::HighChart.new("graph") do |c|
      c.chart(polar: true, type: "line")
-     c.title(text: "A．仕事のストレス要因", x: -80)
-     c.pane(size: "80%")
+     c.title(text: "A．仕事のストレス要因", x: -20)
+     c.pane(size: "85%")
      c.xAxis(categories: chart_a_categories,
              tickmarkPlacement: 'on',
              lineWidth: 0)
      c.yAxis(gridLineInterpolation: 'polygon', lineWidth: 0, min: 0)
   
-     c.legend(align: 'right', verticalAlign: 'top', y: 70, layout: 'vertical')
+    c.legend(verticalAlign: 'top', y: 40, layout: 'vertical')
      c.series(name: 'あなたのストレス度',
               data: stress_value_a,
               pointPlacement: 'on')
@@ -211,14 +211,14 @@ class ValuesController < ApplicationController
   
    @chart_b = LazyHighCharts::HighChart.new("graph") do |c|
      c.chart(polar: true, type: "line")
-     c.title(text: "B．心身のストレス反応", x: -80)
-     c.pane(size: "80%")
+     c.title(text: "B．心身のストレス反応", x: -20)
+     c.pane(size: "85%")
      c.xAxis(categories: chart_b_categories,
              tickmarkPlacement: 'on',
              lineWidth: 0)
      c.yAxis(gridLineInterpolation: 'polygon', lineWidth: 0, min: 0)
   
-     c.legend(align: 'right', verticalAlign: 'top', y: 70, layout: 'vertical')
+     c.legend(verticalAlign: 'top', y: 40, layout: 'vertical')
      c.series(name: 'あなたのストレス度',
               data: stress_value_b,
               pointPlacement: 'on')
@@ -230,14 +230,14 @@ class ValuesController < ApplicationController
   
     @chart_c = LazyHighCharts::HighChart.new("graph") do |c|
      c.chart(polar: true, type: "line")
-     c.title(text: "C．周囲のサポート", x: -80)
-     c.pane(size: "80%")
+     c.title(text: "C．周囲のサポート", x: -20)
+     c.pane(size: "85%")
      c.xAxis(categories: chart_c_categories,
              tickmarkPlacement: 'on',
              lineWidth: 0)
      c.yAxis(gridLineInterpolation: 'polygon', lineWidth: 0, min: 0)
   
-     c.legend(align: 'right', verticalAlign: 'top', y: 70, layout: 'vertical')
+     c.legend(verticalAlign: 'top', y: 40, layout: 'vertical')
      c.series(name: 'あなたのストレス度',
               data: stress_value_c,
               pointPlacement: 'on')
