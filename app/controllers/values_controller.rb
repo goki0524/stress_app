@@ -26,11 +26,11 @@ class ValuesController < ApplicationController
   
   def interview
     @value = Value.find(params[:id])
-    if @value.high_value? && @value.interview == false
+    if @value.high_value? && @value.interview == false && @value.projects.present?
       @value.update(interview: true)
+      current_employee.send_interview_mail(@value)
       flash[:success] = "担当者へ連絡しました。"
       redirect_to @value
-      current_employee.send_interview_mail
     else
       redirect_to @value
     end

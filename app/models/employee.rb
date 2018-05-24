@@ -44,16 +44,15 @@ class Employee < ApplicationRecord
     departments.delete(department)
   end
   
-  # 従業員の所属する会社に面談のメールを送信
-  def send_interview_mail
-    if departments.present?
-      companies = departments.map { |d| d.company }
-      EmployeeMailer.send_interview_mail(self, companies).deliver_now
-    else
-      false
+  # ストレス値を提出した実施回の会社に面談メールを送信
+  def send_interview_mail(value)
+    company = []
+    value.projects.each do |project|
+      company << project.company
     end
-  end 
-  
+    EmployeeMailer.send_interview_mail(self, company).deliver_now
+  end
+   
   # ストレスチェックの結果を自身のメールへ送信
   def send_result_mail(value)
     EmployeeMailer.send_result_mail(self, value).deliver_now

@@ -60,7 +60,8 @@ class ValuesTest < ActionDispatch::IntegrationTest
   test "value interview check" do
     log_in_as_employee(@employee)
     @employee.belong(@department)
-    #高ストレス値でない場合のテスト
+    @value.belong(@project)
+    #高ストレス値でない場合のテスト: NG
     assert_not @value.high_value?
     post interview_value_path(@value)
     assert_equal 0, ActionMailer::Base.deliveries.size
@@ -68,6 +69,11 @@ class ValuesTest < ActionDispatch::IntegrationTest
     assert_redirected_to @value
     #高ストレス値の場合のテスト
     assert @high_value.high_value?
+    #部署と関連付けをしていない場合: NG
+    post interview_value_path(@high_value)
+    assert_equal 0, ActionMailer::Base.deliveries.size
+    #部署と関連付けをした場合: OK
+    @high_value.belong(@project)
     post interview_value_path(@high_value)
     assert_equal 1, ActionMailer::Base.deliveries.size
     assert_not flash.empty?
