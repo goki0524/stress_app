@@ -8,6 +8,7 @@ class EmployeeMailer < ApplicationMailer
     @company = nil
     for company in companies
       @company = company
+      mail.body.decoded.encode("UTF-8", mail.charset)
       mail to: company.company_email, subject: "高ストレス者からの面談希望の通知" 
       @company = nil
     end
