@@ -2,8 +2,8 @@
 
 <p>高ストレス者からの面談の希望がありました。</p>
 <p>氏名：<%= @employee.full_name %>さん</p>
-<p>部署：<% @employee.relationships.each do |i| %>
-            <%= "#{i.department.department_name}" %>
+<p>部署：<% @belong_department.each do |department| %>
+            <%= "#{department.department_name}" %>
          <% end %>
 </p>
 <p>メールアドレス:<%= @employee.email %></p>

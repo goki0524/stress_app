@@ -2,5 +2,9 @@ Stress App
 
 高ストレス者からの面談の希望がありました。
 <%= @employee.full_name %>さん
+<% @belong_department.each do |department| %>
+部署:<%= "#{department.department_name}" %>
+<% end %>
 メールアドレス:<%= @employee.email %>
+
 上記メールアドレスより、ご連絡して頂き産業医との面談日を決めてください。

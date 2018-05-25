@@ -88,6 +88,7 @@ class Value < ApplicationRecord
     projects.delete(project)
   end
   
+  
   #値の置換
   def replace(x)
     case x

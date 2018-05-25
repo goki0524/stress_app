@@ -12,5 +12,10 @@ class Department < ApplicationRecord
     DepartmentMailer.send_qrcode(self).deliver_now
   end
   
+  #従業員が所属しているか
+  def belong?(employee)
+    employees.include?(employee)
+  end
+  
 end
 

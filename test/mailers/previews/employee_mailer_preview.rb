@@ -3,9 +3,14 @@ class EmployeeMailerPreview < ActionMailer::Preview
   
   # Preview this email at http://localhost:3000/rails/mailers/employee_mailer/send_interview_mail
   def send_interview_mail
-    employee = Employee.first
-    companies = employee.departments.map{ |d| d.company }
-    EmployeeMailer.send_interview_mail(employee, companies)
+    employee = Employee.find_by(email: "test@test.com")
+    # companies = employee.departments.map{ |d| d.company }
+    value = Value.find(34)
+    company = []
+    value.projects.each do |project|
+      company << project.company
+    end
+    EmployeeMailer.send_interview_mail(employee, company)
   end
   
   # Preview this email at http://localhost:3000/rails/mailers/employee_mailer/send_result_mail

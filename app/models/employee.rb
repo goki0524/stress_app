@@ -29,7 +29,7 @@ class Employee < ApplicationRecord
   # 部署に所属する
   def belong(department)
     # relationships.create(department_id: department.id)
-     departments << department
+    departments << department
   end
   
   # 部署に所属しているか判定
@@ -40,13 +40,14 @@ class Employee < ApplicationRecord
   
   # 部署を抜ける
   def escape(department)
-    # relationships.find_by(department_id: department.id).delete
+    #relationships.find_by(department_id: department.id).delete
     departments.delete(department)
   end
   
   # ストレス値を提出した実施回の会社に面談メールを送信
   def send_interview_mail(value)
     company = []
+    #ストレス値を提出できるのは一つの実施回のみ
     value.projects.each do |project|
       company << project.company
     end
