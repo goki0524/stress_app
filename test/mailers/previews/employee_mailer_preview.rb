@@ -5,7 +5,7 @@ class EmployeeMailerPreview < ActionMailer::Preview
   def send_interview_mail
     employee = Employee.find_by(email: "test@test.com")
     # companies = employee.departments.map{ |d| d.company }
-    value = Value.find(34)
+    value = Value.find(33)
     company = []
     value.projects.each do |project|
       company << project.company
