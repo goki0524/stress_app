@@ -3,10 +3,5 @@
 <p>高ストレス者からの面談の希望がありました。</p>
 <p>氏名：<%= @employee.full_name %>さん</p>
 <p>メールアドレス:<%= @employee.email %></p>
-<p>会社名：<%= @company.company_name %></p>
-<p>部署：
-<% @company.departments.each do |department| %>
-<%= department.department_name if department.belong?(@employee) %>
-<% end %>
-</p>
+
 <p>上記メールアドレスより、ご連絡して頂き産業医との面談日を決めてください。</p>
