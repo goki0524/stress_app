@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-md-12 text-center jumbotron mt-4 white">
     <h1>面談の確認</h1>
-      <% if @value.high_value? && @value.interview == false && @value.projects.present? %>
+      <% if @value.high_value? && @value.interview == false && @value.projects.count == 1 %>
         <p class="lead">高ストレスであるため医師との面談をお勧めします</p>
         
           <%= button_to "希望する", { :action => "interview", :id => @value.id }, 
@@ -21,6 +21,9 @@
       <% elsif !@value.high_value? %>
         <p>高ストレスと判定されませんでしたので、面談はできません</p>
         
+      <% elsif @value.projects.count > 1 %>
+       <p>ストレス値を提出する実施回を一つにしてください</p>
+   
       <% else %>
       <p>実施回に提出がされていません</p>
     <% end %>
